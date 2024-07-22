@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/*Utility classes*/
+.h-full {
+  height: 100%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-gray {
+  background-color: #E3E3E4;
+}
+
+.bg-gray-hover:hover {
+  background-color: #E3E3E4;
+}
+
+.bg-gray-dark {
+  background-color: #cdcdcd !important;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+.dashboard-height {
+  height: calc(100% - var(--mat-toolbar-standard-height));
+}
+
+.space-between {
+  justify-content: space-between;
+}

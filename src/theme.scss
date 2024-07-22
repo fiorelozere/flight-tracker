@@ -1,0 +1,34 @@
+@use '@angular/material' as mat;
+
+$theme: mat.define-theme(
+    (
+      color: (
+        theme-type: light,
+        primary: mat.$azure-palette,
+        tertiary: mat.$red-palette,
+      ),
+    )
+);
+
+@include mat.core();
+@include mat.color-variants-backwards-compatibility($theme);
+
+@mixin theme($theme) {
+  app-toolbar {
+    color: mat.get-theme-color($theme, primary);
+
+    mat-icon {
+      color: mat.get-theme-color($theme, primary);
+    }
+
+    mat-toolbar {
+      color: mat.get-theme-color($theme, primary);
+      background: mat.get-theme-color($theme, primary-container);
+    }
+  }
+}
+
+:root {
+  @include mat.all-component-themes($theme);
+  @include theme($theme);
+}
