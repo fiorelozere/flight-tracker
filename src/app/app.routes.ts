@@ -7,8 +7,8 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'auth',
-    loadComponent: () => import('./pages/auth/auth.component').then(m => m.AuthComponent)
+    path: 'sign-in',
+    loadComponent: () => import('./pages/sign-in/sign-in.component').then(m => m.SignInComponent)
   },
   {
     path: 'dashboard',
