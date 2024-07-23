@@ -5,7 +5,7 @@ import { LayoutService } from './layout.service';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
-import { AuthState } from '../auth/auth.state';
+import { AuthStore } from '../auth/auth.store';
 
 @Component({
   selector: 'app-toolbar',
@@ -49,7 +49,7 @@ import { AuthState } from '../auth/auth.state';
 
 export class ToolbarComponent {
   layout = inject(LayoutService);
-  authState = inject(AuthState);
+  authState = inject(AuthStore);
 
   logout() {
     this.authState.logout();

@@ -12,7 +12,7 @@ import { injectLocalStorage } from 'ngxtension/inject-local-storage';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthState {
+export class AuthStore {
   auth = inject(AuthService);
   snackBar = inject(MatSnackBar);
   router = inject(Router);

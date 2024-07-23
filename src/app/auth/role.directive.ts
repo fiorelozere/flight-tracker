@@ -1,6 +1,6 @@
 import { Directive, effect, inject, input } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { AuthState } from './auth.state';
+import { AuthStore } from './auth.store';
 import { Role } from '../enums/role.enum';
 
 @Directive({
@@ -10,12 +10,12 @@ import { Role } from '../enums/role.enum';
 })
 export class RoleDirective {
   role = input.required<Role>();
-  authState = inject(AuthState);
-  ngIf = inject(NgIf)
+  authState = inject(AuthStore);
+  ngIfRef = inject(NgIf)
 
   constructor() {
     effect(() => {
-      this.ngIf.ngIf = this.role() === this.authState.tokenDecoded()?.role;
+      this.ngIfRef.ngIf = this.role() === this.authState.tokenDecoded()?.role;
     });
   }
 

@@ -5,7 +5,7 @@ import { MatInput } from '@angular/material/input';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthState } from '../../auth/auth.state';
+import { AuthStore } from '../../auth/auth.store';
 import { AuthPayload } from '../../models/auth-payload.interface';
 
 @Component({
@@ -75,7 +75,7 @@ import { AuthPayload } from '../../models/auth-payload.interface';
 
 export class SignInComponent {
   fb = inject(FormBuilder);
-  authState = inject(AuthState);
+  authState = inject(AuthStore);
 
   hide = signal(true);
   errorMessage = signal<string | null>(null);
