@@ -5,6 +5,7 @@ import { LayoutService } from './layout.service';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
+import { AuthState } from '../auth/auth.state';
 
 @Component({
   selector: 'app-toolbar',
@@ -24,8 +25,8 @@ import { RouterLink } from '@angular/router';
     </mat-toolbar>
     <mat-menu #menu="matMenu">
       <div mat-menu-item>
-        <p>John Doe</p>
-        <p>Admin</p>
+        <p>{{authState.tokenDecoded()?.username}}</p>
+        <p>{{authState.tokenDecoded()?.role}}</p>
       </div>
       <button mat-menu-item (click)="logout()">
         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="logout"></mat-icon>
@@ -48,9 +49,9 @@ import { RouterLink } from '@angular/router';
 
 export class ToolbarComponent {
   layout = inject(LayoutService);
-
+  authState = inject(AuthState);
 
   logout() {
-
+    this.authState.logout();
   }
 }

@@ -46,7 +46,9 @@ import { MatDivider } from '@angular/material/divider';
         </div>
       </mat-drawer>
       <mat-drawer-content class="overflow-y-scroll h-full">
-        <router-outlet></router-outlet>
+        <div class="m-4">
+          <router-outlet></router-outlet>
+        </div>
       </mat-drawer-content>
     </mat-drawer-container>
   `,

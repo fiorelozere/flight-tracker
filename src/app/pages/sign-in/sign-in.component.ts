@@ -9,6 +9,7 @@ import { AuthState } from '../../auth/auth.state';
 import { AuthPayload } from '../../models/auth-payload.interface';
 
 @Component({
+  selector: 'app-sign-in',
   template: `
     <div class="flex items-center justify-center flex-column h-full w-full">
       <h1>Welcome to Flight Tracker</h1>

@@ -4,13 +4,21 @@ import { TokenDecoded } from '../models/token-decoded.interface';
 import { AuthService } from './auth.service';
 import { AuthPayload } from '../models/auth-payload.interface';
 import { createEffect } from 'ngxtension/create-effect';
-import { map } from 'rxjs';
+import { catchError, concatMap, map, pipe, throwError } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { injectLocalStorage } from 'ngxtension/inject-local-storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthState {
   auth = inject(AuthService);
+  snackBar = inject(MatSnackBar);
+  router = inject(Router);
+  tokenStorage = injectLocalStorage<string | null>('token', {
+    storageSync: true
+  });
   token = signal<string | null>(null);
   isAuthenticated = computed(() => !!this.token());
   tokenDecoded = computed(() => {
@@ -21,10 +29,11 @@ export class AuthState {
     return this.decodeToken(token);
   });
 
-  constructor() {
-    effect(() => {
-      console.log(this.token(), this.tokenDecoded())
-    })
+  init() {
+    const token = this.tokenStorage();
+    if(token) {
+      this.setToken(token);
+    }
   }
 
   setToken(token: string | null) {
@@ -39,12 +48,26 @@ export class AuthState {
     }
   }
 
-  login(payload: AuthPayload) {
-    return createEffect(() =>
-      this.auth.login(payload).pipe(map(response => {
-        this.setToken(response.token);
-        return response;
-      }))
-    )
+  login = createEffect<AuthPayload>(
+    pipe(
+      concatMap(payload =>
+        this.auth.login(payload).pipe(map(response => {
+            this.setToken(response.token);
+            this.tokenStorage.set(response.token);
+            this.router.navigateByUrl('/dashboard');
+            return response;
+          }), catchError(err => {
+            this.snackBar.open('Wrong credentials', 'Dismiss', { duration: 5000 });
+            return throwError(() => err);
+          })
+        )
+      ),
+    ),
+  );
+
+  logout() {
+    this.setToken(null);
+    this.tokenStorage.set(null);
+    this.router.navigateByUrl('/sign-in');
   }
 }
