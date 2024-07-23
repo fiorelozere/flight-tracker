@@ -3,6 +3,10 @@ const fs = require('fs');
 
 function createRandomTicket(id) {
   const ticketType = faker.helpers.arrayElement(['Economy', 'Business', 'First Class']);
+  const fromDate = faker.date.future();
+  // Ensure to_date is after from_date by adding a random duration (e.g., 1 to 30 days)
+  const toDate = new Date(fromDate);
+  toDate.setDate(fromDate.getDate() + faker.number.int({ min: 1, max: 30 }));
 
   return {
     id: id,
@@ -11,8 +15,8 @@ function createRandomTicket(id) {
     ticket_type: ticketType,
     ticket_type_id: `${id}-${ticketType}`,
     price: faker.number.int({ min: 100, max: 2000 }),
-    from_date: faker.date.future().toISOString(),
-    to_date: faker.date.future().toISOString(),
+    from_date: fromDate.toISOString(),
+    to_date: toDate.toISOString(),
     seat_number: faker.helpers.arrayElement(['12A', '14B', '16C', '18D', '20E', '22F']),
   };
 }

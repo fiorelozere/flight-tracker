@@ -8,6 +8,7 @@ import { catchError, concatMap, map, pipe, throwError } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { injectLocalStorage } from 'ngxtension/inject-local-storage';
+import { explicitEffect } from 'ngxtension/explicit-effect';
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +30,21 @@ export class AuthStore {
     return this.decodeToken(token);
   });
 
+  constructor() {
+    explicitEffect([this.tokenStorage], ([token]) => {
+      this.setToken(token ?? null);
+      if(token) {
+        this.router.navigateByUrl('/dashboard');
+      } else {
+        this.router.navigateByUrl('/sign-in');
+      }
+    });
+  }
+
+
   init() {
     const token = this.tokenStorage();
-    if(token) {
+    if (token) {
       this.setToken(token);
     }
   }
