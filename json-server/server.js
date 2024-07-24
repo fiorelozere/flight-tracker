@@ -43,11 +43,24 @@ server.use((req, res, next) => {
 
 server.post('/tickets', (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
-    next();
+    // inbound, outbound, from_date, to_date, and seat_number
+    const { inbound, outbound, from_date, to_date, seat_number } = req.body;
+    if (inbound && outbound && from_date && to_date && seat_number) {
+      const ticket = router.db.get('tickets').find({ inbound, outbound, from_date, to_date, seat_number }).value();
+      if (!ticket) {
+        router.db.get('tickets').push(req.body).write();
+        return res.status(200).jsonp({ message: "Ticket created successfully" });
+      } else {
+        return res.status(400).jsonp({ error: "Ticket already exists" });
+      }
+    } else {
+      return res.status(400).jsonp({ error: "Missing required fields" });
+    }
   } else {
-    res.status(403).jsonp({ error: "Access denied. Admins only." });
+    return res.status(403).jsonp({ error: "Access denied. Admins only." });
   }
 });
+
 
 // Use default router
 server.use(router);

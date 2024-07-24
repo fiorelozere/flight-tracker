@@ -1,7 +1,7 @@
-import {getState, patchState, signalStore, withMethods, withState,} from '@ngrx/signals';
+import { getState, patchState, signalStore, withComputed, withMethods, withState, } from '@ngrx/signals';
 import {rxMethod} from '@ngrx/signals/rxjs-interop';
 import {catchError, EMPTY, pipe, switchMap, tap} from 'rxjs';
-import {inject} from '@angular/core';
+import { computed, inject } from '@angular/core';
 import {TicketsService} from '../../services/tickets.service';
 import {TicketListParams, TicketListState} from '../../models/ticket-state.interface';
 
@@ -55,7 +55,7 @@ export const TicketListStore = signalStore(
                 loaded: false,
                 loading: false,
               });
-              return EMPTY
+              return EMPTY;
             })
           );
         }),

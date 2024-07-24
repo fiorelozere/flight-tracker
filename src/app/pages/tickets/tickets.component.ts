@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, OnInit } from '@angular/core';
 import {MatButton} from '@angular/material/button';
 import {Router, RouterLink} from '@angular/router';
 import {RoleDirective} from '../../auth/role.directive';
@@ -45,7 +45,6 @@ import {explicitEffect} from "ngxtension/explicit-effect";
           [total]="store.total()"
           (pageChange)="onPagination($event)"
           [data]="store.data()"></app-ticket-list>
-        <!--        <pre>{{store.state() | json}}</pre>-->
       </mat-card-content>
     </mat-card>
   `,

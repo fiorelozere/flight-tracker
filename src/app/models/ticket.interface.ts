@@ -1,5 +1,5 @@
 export interface Ticket {
-  id: number;
+  id?: number;
   inbound: string;
   outbound: string;
   ticket_type: string;

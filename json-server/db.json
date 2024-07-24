@@ -110013,6 +110013,81 @@
       "from_date": "6/10/2025",
       "to_date": "6/12/2025",
       "seat_number": "12A"
+    },
+    {
+      "inbound": "test",
+      "outbound": "test",
+      "ticket_type": "Business",
+      "price": 34,
+      "ticket_type_id": "",
+      "from_date": "2024-07-15T22:00:00.000Z",
+      "to_date": "2024-07-24T22:00:00.000Z",
+      "seat_number": "34g",
+      "id": 10001
+    },
+    {
+      "inbound": "test",
+      "outbound": "test",
+      "ticket_type": "Economy",
+      "price": 100,
+      "from_date": "17/07/2024",
+      "to_date": "24/07/2024",
+      "seat_number": "100",
+      "id": 10002
+    },
+    {
+      "inbound": "test",
+      "outbound": "test",
+      "ticket_type": "Economy",
+      "price": 24,
+      "from_date": "15/07/2024",
+      "to_date": "09/07/2024",
+      "seat_number": "12"
+    },
+    {
+      "inbound": "test1",
+      "outbound": "test",
+      "ticket_type": "Economy",
+      "price": 24,
+      "from_date": "15/07/2024",
+      "to_date": "09/07/2024",
+      "seat_number": "12"
+    },
+    {
+      "inbound": "test12",
+      "outbound": "test",
+      "ticket_type": "Economy",
+      "price": 24,
+      "from_date": "15/07/2024",
+      "to_date": "09/07/2024",
+      "seat_number": "12"
+    },
+    {
+      "inbound": "test",
+      "outbound": "test",
+      "ticket_type": "Economy",
+      "price": 100,
+      "from_date": "10/07/2024",
+      "to_date": "17/07/2024",
+      "seat_number": "12"
+    },
+    {
+      "inbound": "test",
+      "outbound": "test",
+      "ticket_type": "Economy",
+      "price": 100,
+      "from_date": "10/07/2024",
+      "to_date": "25/07/2024",
+      "seat_number": "12"
+    },
+    {
+      "inbound": "test2",
+      "outbound": "test",
+      "ticket_type": "Economy",
+      "price": 100,
+      "from_date": "10/07/2024",
+      "to_date": "25/07/2024",
+      "seat_number": "12"
     }
   ]
 }

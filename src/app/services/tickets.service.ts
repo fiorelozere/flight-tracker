@@ -39,5 +39,10 @@ export class TicketsService {
 
     return httpParams;
   }
+
+  createTicket(ticket: Ticket) {
+    const path = `${environment.apiUrl}/tickets`;
+    return this.http.post<Ticket>(path, ticket);
+  }
 }
 
