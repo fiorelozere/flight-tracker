@@ -1,9 +1,9 @@
-import { getState, patchState, signalStore, withMethods, withState, } from '@ngrx/signals';
-import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap } from 'rxjs';
-import { inject } from '@angular/core';
-import { TicketsService } from '../../services/tickets.service';
-import { TicketListParams, TicketListState } from '../../models/ticket-state.interface';
+import {getState, patchState, signalStore, withMethods, withState,} from '@ngrx/signals';
+import {rxMethod} from '@ngrx/signals/rxjs-interop';
+import {catchError, EMPTY, pipe, switchMap, tap} from 'rxjs';
+import {inject} from '@angular/core';
+import {TicketsService} from '../../services/tickets.service';
+import {TicketListParams, TicketListState} from '../../models/ticket-state.interface';
 
 
 const initialState: TicketListState = {
@@ -32,9 +32,9 @@ export const TicketListStore = signalStore(
     },
     load: rxMethod<Partial<TicketListParams>>(
       pipe(
-        tap(() => patchState(store, { loading: true })),
+        tap(() => patchState(store, {loading: true})),
         switchMap((params: Partial<TicketListParams>) => {
-          const newParams = { ...getState(store).params, ...params };
+          const newParams = {...getState(store).params, ...params};
           return ticketsService.getTickets(newParams).pipe(
             tap({
               next: response => {
@@ -47,17 +47,19 @@ export const TicketListStore = signalStore(
                   params: newParams,
                 });
               },
-              error: () => {
-                patchState(store, {
-                  error: 'Error loading tickets',
-                  loaded: false,
-                  loading: false,
-                });
-              },
-              finalize: () => patchState(store, { loading: false }),
+            }),
+            catchError((e) => {
+              console.log(e)
+              patchState(store, {
+                error: 'Error loading tickets',
+                loaded: false,
+                loading: false,
+              });
+              return EMPTY
             })
           );
-        })
+        }),
+
       )
     )
   }))

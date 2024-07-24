@@ -15,8 +15,8 @@ function createRandomTicket(id) {
     ticket_type: ticketType,
     ticket_type_id: `${id}-${ticketType}`,
     price: faker.number.int({ min: 100, max: 2000 }),
-    from_date: fromDate.toISOString(),
-    to_date: toDate.toISOString(),
+    from_date: fromDate.toLocaleDateString(),
+    to_date: toDate.toLocaleDateString(),
     seat_number: faker.helpers.arrayElement(['12A', '14B', '16C', '18D', '20E', '22F']),
   };
 }

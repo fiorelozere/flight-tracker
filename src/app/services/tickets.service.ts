@@ -19,10 +19,10 @@ export class TicketsService {
       .set('_limit', params.pageSize.toString());
 
     if (params.from_date) {
-      httpParams = httpParams.set('from_date', params.from_date);
+      httpParams = httpParams.set('from_date_gte', new Date(params.from_date).toLocaleDateString());
     }
     if (params.to_date) {
-      httpParams = httpParams.set('to_date', params.to_date);
+      httpParams = httpParams.set('to_date_lte', new Date(params.to_date).toLocaleDateString());
     }
     if (params.inbound) {
       httpParams = httpParams.set('inbound_like', params.inbound);
@@ -31,10 +31,10 @@ export class TicketsService {
       httpParams = httpParams.set('outbound_like', params.outbound);
     }
     if (params.from_price !== null && params.from_price !== undefined) {
-      httpParams = httpParams.set('from_price_gte', params.from_price.toString());
+      httpParams = httpParams.set('price_gte', params.from_price.toString());
     }
     if (params.to_price !== null && params.to_price !== undefined) {
-      httpParams = httpParams.set('to_price_lte', params.to_price.toString());
+      httpParams = httpParams.set('price_lte', params.to_price.toString());
     }
 
     return httpParams;

@@ -12,6 +12,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthStore } from './auth/auth.store';
 import { authInterceptor } from './auth/auth.interceptor';
+import {MAT_DATE_LOCALE, provideNativeDateAdapter} from "@angular/material/core";
 
 export function initializeApp(auth: AuthStore) {
   return () => auth.init();
@@ -29,6 +30,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([authInterceptor])),
+    provideNativeDateAdapter(),
     MatSnackBar,
   ]
 };

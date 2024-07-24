@@ -8,6 +8,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   template: `
     @for (ticket of data(); track ticket.id) {
       <app-ticket-card [ticket]="ticket"></app-ticket-card>
+    } @empty {
+      <p class="m-4">No tickets found</p>
     }
     <mat-paginator [length]="total()"
                    [pageSize]="pageSize()"

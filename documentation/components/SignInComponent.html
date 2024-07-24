@@ -1,0 +1,769 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>flight-tracker documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">flight-tracker documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SignInComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/sign-in/sign-in.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-sign-in</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>MatCard</code>
+                            <code>MatCardHeader</code>
+                            <code>MatCardSubtitle</code>
+                            <code>MatCardTitle</code>
+                            <code>MatCardContent</code>
+                            <code>MatFormField</code>
+                            <code>MatInput</code>
+                            <code>MatIconButton</code>
+                            <code>MatIcon</code>
+                            <code>MatLabel</code>
+                            <code>MatError</code>
+                            <code>MatButton</code>
+                            <code>ReactiveFormsModule</code>
+                            <code>MatSuffix</code>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;flex items-center justify-center flex-column h-full w-full&quot;&gt;
+  &lt;h1&gt;Welcome to Flight Tracker&lt;/h1&gt;
+  &lt;mat-card appearance&#x3D;&quot;outlined&quot;&gt;
+    &lt;mat-card-header&gt;
+      &lt;mat-card-title&gt;Sign in&lt;/mat-card-title&gt;
+      &lt;mat-card-subtitle&gt;Enter credentials to continue&lt;/mat-card-subtitle&gt;
+    &lt;/mat-card-header&gt;
+    &lt;mat-card-content&gt;
+      &lt;form [formGroup]&#x3D;&quot;form&quot; class&#x3D;&quot;flex-column flex my-4&quot; (ngSubmit)&#x3D;&quot;login()&quot;&gt;
+        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+          &lt;mat-label&gt;Enter your username&lt;/mat-label&gt;
+          &lt;input
+            formControlName&#x3D;&quot;username&quot;
+            matInput
+            placeholder&#x3D;&quot;johndoe&quot;
+            required
+          /&gt;
+        &lt;/mat-form-field&gt;
+        &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+          &lt;mat-label&gt;Enter your password&lt;/mat-label&gt;
+          &lt;input
+            formControlName&#x3D;&quot;password&quot;
+            matInput [type]&#x3D;&quot;hide() ? &#x27;password&#x27; : &#x27;text&#x27;&quot;/&gt;
+          &lt;button
+            mat-icon-button
+            matSuffix
+            (click)&#x3D;&quot;clickEvent($event)&quot;
+            [attr.aria-label]&#x3D;&quot;&#x27;Hide password&#x27;&quot;
+            [attr.aria-pressed]&#x3D;&quot;hide()&quot;
+          &gt;
+            &lt;mat-icon&gt;{{ hide() ? &#x27;visibility_off&#x27; : &#x27;visibility&#x27; }}&lt;/mat-icon&gt;
+          &lt;/button&gt;
+        &lt;/mat-form-field&gt;
+        &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;form.invalid&quot; mat-flat-button class&#x3D;&quot;w-full&quot;&gt;Sign in&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/mat-card-content&gt;
+    @if (errorMessage()) {
+      &lt;mat-error&gt;{{ errorMessage() }}&lt;/mat-error&gt;
+    }
+  &lt;/mat-card&gt;
+&lt;/div&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#authState" >authState</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage" >errorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#fb" >fb</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#hide" >hide</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clickEvent" >clickEvent</a>
+                            </li>
+                            <li>
+                                <a href="#login" >login</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickEvent"></a>
+                    <span class="name">
+                        <span ><b>clickEvent</b></span>
+                        <a href="#clickEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickEvent(event: MouseEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/pages/sign-in/sign-in.component.ts:87</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>MouseEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="login"></a>
+                    <span class="name">
+                        <span ><b>login</b></span>
+                        <a href="#login"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>login()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/pages/sign-in/sign-in.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authState"></a>
+                    <span class="name">
+                        <span ><b>authState</b></span>
+                        <a href="#authState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AuthStore)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/pages/sign-in/sign-in.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMessage"></a>
+                    <span class="name">
+                        <span ><b>errorMessage</b></span>
+                        <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;string | null&gt;(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/pages/sign-in/sign-in.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fb"></a>
+                    <span class="name">
+                        <span ><b>fb</b></span>
+                        <a href="#fb"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(FormBuilder)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/pages/sign-in/sign-in.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.fb.group({
+    username: [ &#x27;&#x27;, [ Validators.required ] ],
+    password: [ &#x27;&#x27;, [ Validators.required ] ]
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/pages/sign-in/sign-in.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hide"></a>
+                    <span class="name">
+                        <span ><b>hide</b></span>
+                        <a href="#hide"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(true)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/pages/sign-in/sign-in.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, inject, signal } from &#x27;@angular/core&#x27;;
+import { MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle } from &#x27;@angular/material/card&#x27;;
+import { MatError, MatFormField, MatLabel, MatSuffix } from &#x27;@angular/material/form-field&#x27;;
+import { MatInput } from &#x27;@angular/material/input&#x27;;
+import { MatButton, MatIconButton } from &#x27;@angular/material/button&#x27;;
+import { MatIcon } from &#x27;@angular/material/icon&#x27;;
+import { FormBuilder, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
+import { AuthStore } from &#x27;../../auth/auth.store&#x27;;
+import { AuthPayload } from &#x27;../../models/auth-payload.interface&#x27;;
+
+@Component({
+  selector: &#x27;app-sign-in&#x27;,
+  template: &#x60;
+    &lt;div class&#x3D;&quot;flex items-center justify-center flex-column h-full w-full&quot;&gt;
+      &lt;h1&gt;Welcome to Flight Tracker&lt;/h1&gt;
+      &lt;mat-card appearance&#x3D;&quot;outlined&quot;&gt;
+        &lt;mat-card-header&gt;
+          &lt;mat-card-title&gt;Sign in&lt;/mat-card-title&gt;
+          &lt;mat-card-subtitle&gt;Enter credentials to continue&lt;/mat-card-subtitle&gt;
+        &lt;/mat-card-header&gt;
+        &lt;mat-card-content&gt;
+          &lt;form [formGroup]&#x3D;&quot;form&quot; class&#x3D;&quot;flex-column flex my-4&quot; (ngSubmit)&#x3D;&quot;login()&quot;&gt;
+            &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+              &lt;mat-label&gt;Enter your username&lt;/mat-label&gt;
+              &lt;input
+                formControlName&#x3D;&quot;username&quot;
+                matInput
+                placeholder&#x3D;&quot;johndoe&quot;
+                required
+              /&gt;
+            &lt;/mat-form-field&gt;
+            &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+              &lt;mat-label&gt;Enter your password&lt;/mat-label&gt;
+              &lt;input
+                formControlName&#x3D;&quot;password&quot;
+                matInput [type]&#x3D;&quot;hide() ? &#x27;password&#x27; : &#x27;text&#x27;&quot;/&gt;
+              &lt;button
+                mat-icon-button
+                matSuffix
+                (click)&#x3D;&quot;clickEvent($event)&quot;
+                [attr.aria-label]&#x3D;&quot;&#x27;Hide password&#x27;&quot;
+                [attr.aria-pressed]&#x3D;&quot;hide()&quot;
+              &gt;
+                &lt;mat-icon&gt;{{ hide() ? &#x27;visibility_off&#x27; : &#x27;visibility&#x27; }}&lt;/mat-icon&gt;
+              &lt;/button&gt;
+            &lt;/mat-form-field&gt;
+            &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;form.invalid&quot; mat-flat-button class&#x3D;&quot;w-full&quot;&gt;Sign in&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/mat-card-content&gt;
+        @if (errorMessage()) {
+          &lt;mat-error&gt;{{ errorMessage() }}&lt;/mat-error&gt;
+        }
+      &lt;/mat-card&gt;
+    &lt;/div&gt;
+  &#x60;,
+  standalone: true,
+  imports: [
+    MatCard,
+    MatCardHeader,
+    MatCardSubtitle,
+    MatCardTitle,
+    MatCardContent,
+    MatFormField,
+    MatInput,
+    MatIconButton,
+    MatIcon,
+    MatLabel,
+    MatError,
+    MatButton,
+    ReactiveFormsModule,
+    MatSuffix
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+
+export class SignInComponent {
+  fb &#x3D; inject(FormBuilder);
+  authState &#x3D; inject(AuthStore);
+
+  hide &#x3D; signal(true);
+  errorMessage &#x3D; signal&lt;string | null&gt;(null);
+  form &#x3D; this.fb.group({
+    username: [ &#x27;&#x27;, [ Validators.required ] ],
+    password: [ &#x27;&#x27;, [ Validators.required ] ]
+  });
+
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
+  }
+
+  login() {
+    if(this.form.invalid) {
+      this.errorMessage.set(&#x27;Please enter your username and password&#x27;)
+      return;
+    } else {
+      const payload &#x3D; this.form.value as AuthPayload;
+      this.authState.login(payload)
+    }
+  }
+}
+</code></pre>
+    </div>
+
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="flex items-center justify-center flex-column h-full w-full">  <h1>Welcome to Flight Tracker</h1>  <mat-card appearance="outlined">    <mat-card-header>      <mat-card-title>Sign in</mat-card-title>      <mat-card-subtitle>Enter credentials to continue</mat-card-subtitle>    </mat-card-header>    <mat-card-content>      <form [formGroup]="form" class="flex-column flex my-4" (ngSubmit)="login()">        <mat-form-field appearance="outline">          <mat-label>Enter your username</mat-label>          <input            formControlName="username"            matInput            placeholder="johndoe"            required          />        </mat-form-field>        <mat-form-field appearance="outline">          <mat-label>Enter your password</mat-label>          <input            formControlName="password"            matInput [type]="hide() ? \'password\' : \'text\'"/>          <button            mat-icon-button            matSuffix            (click)="clickEvent($event)"            [attr.aria-label]="\'Hide password\'"            [attr.aria-pressed]="hide()"          >            <mat-icon>{{ hide() ? \'visibility_off\' : \'visibility\' }}</mat-icon>          </button>        </mat-form-field>        <button type="submit" [disabled]="form.invalid" mat-flat-button class="w-full">Sign in</button>      </form>    </mat-card-content>    @if (errorMessage()) {      <mat-error>{{ errorMessage() }}</mat-error>    }  </mat-card></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateTicketComponent', 'selector': 'app-create-ticket'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'TicketCardComponent', 'selector': 'app-ticket-card'},{'name': 'TicketFiltersComponent', 'selector': 'app-ticket-filters'},{'name': 'TicketListComponent', 'selector': 'app-ticket-list'},{'name': 'TicketsComponent', 'selector': 'app-tickets'},{'name': 'ToolbarComponent', 'selector': 'app-toolbar'}];
+    var DIRECTIVES = [{'name': 'RoleDirective', 'selector': '[role]'}];
+    var ACTUAL_COMPONENT = {'name': 'SignInComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SignInComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

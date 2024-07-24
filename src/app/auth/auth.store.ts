@@ -1,4 +1,4 @@
-import { computed, effect, inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { TokenDecoded } from '../models/token-decoded.interface';
 import { AuthService } from './auth.service';
@@ -38,6 +38,8 @@ export class AuthStore {
       } else {
         this.router.navigateByUrl('/sign-in');
       }
+    }, {
+      defer: true
     });
   }
 
@@ -70,7 +72,11 @@ export class AuthStore {
             this.router.navigateByUrl('/dashboard');
             return response;
           }), catchError(err => {
-            this.snackBar.open('Wrong credentials', 'Dismiss', { duration: 5000 });
+            if(err.status === 401) {
+              this.snackBar.open('Wrong credentials', 'Dismiss', { duration: 5000 });
+            } else {
+              this.snackBar.open('An error occurred', 'Dismiss', { duration: 5000 });
+            }
             return throwError(() => err);
           })
         )

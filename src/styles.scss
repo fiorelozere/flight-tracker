@@ -10,6 +10,15 @@ body {
 }
 
 /*Utility classes*/
+
+.d-none {
+  display: none;
+}
+
+.h-10 {
+  height: 10px;
+}
+
 .h-full {
   height: 100%;
 }
@@ -18,13 +27,20 @@ body {
   width: 100%;
 }
 
+.max-w-sm {
+  max-width: 24rem;
+}
+
 .flex {
   display: flex;
 }
 
 .flex-column {
   flex-direction: column;
+}
 
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-center {
@@ -33,6 +49,10 @@ body {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .bg-white {
@@ -99,4 +119,9 @@ my-2 {
 
 .m-4 {
   margin: 1rem;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }

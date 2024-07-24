@@ -23,18 +23,29 @@ server.post('/login', (req, res) => {
   }
 });
 
-// Middleware to protect other routes
 server.use((req, res, next) => {
   if (req.headers.authorization) {
     const token = req.headers.authorization.split(' ')[1]; // Bearer <token>
     try {
       const decoded = jwt.verify(token, SECRET_KEY);
+
+      // Attach user information to request
+      req.user = decoded;
+
       next();
     } catch (error) {
       res.status(401).jsonp({ error: "Invalid token" });
     }
   } else {
     res.status(401).jsonp({ error: "Access denied. No token provided." });
+  }
+});
+
+server.post('/tickets', (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    next();
+  } else {
+    res.status(403).jsonp({ error: "Access denied. Admins only." });
   }
 });
 

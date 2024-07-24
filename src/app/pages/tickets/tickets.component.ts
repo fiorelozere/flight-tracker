@@ -1,19 +1,29 @@
-import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
-import { MatButton } from '@angular/material/button';
-import { Router, RouterLink } from '@angular/router';
-import { RoleDirective } from '../../auth/role.directive';
-import { Role } from '../../enums/role.enum';
-import { MatCard, MatCardContent } from '@angular/material/card';
-import { TicketFiltersComponent } from './components/ticket-filters.component';
-import { TicketListComponent } from './components/ticket-list.component';
-import { TicketListStore } from './tickets.store';
-import { JsonPipe } from '@angular/common';
-import { PageEvent } from '@angular/material/paginator';
-import { injectQueryParams } from 'ngxtension/inject-query-params';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
+import {MatButton} from '@angular/material/button';
+import {Router, RouterLink} from '@angular/router';
+import {RoleDirective} from '../../auth/role.directive';
+import {Role} from '../../enums/role.enum';
+import {MatCard, MatCardContent} from '@angular/material/card';
+import {TicketFiltersComponent} from './components/ticket-filters.component';
+import {TicketListComponent} from './components/ticket-list.component';
+import {TicketListStore} from './tickets.store';
+import {JsonPipe} from '@angular/common';
+import {PageEvent} from '@angular/material/paginator';
+import {injectQueryParams} from 'ngxtension/inject-query-params';
+import {TicketListParams} from "../../models/ticket-state.interface";
+import {MatProgressBar} from "@angular/material/progress-bar";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {explicitEffect} from "ngxtension/explicit-effect";
 
 @Component({
   selector: 'app-tickets',
   template: `
+    <div class="h-10">
+      @if (store.loading()) {
+        <mat-progress-bar mode="query"></mat-progress-bar>
+      }
+    </div>
+
     <div class="flex items-center space-between">
       <h3>Tickets</h3>
       <button mat-flat-button *role="Role.Admin" [routerLink]="['create']">Create Ticket</button>
@@ -21,7 +31,9 @@ import { injectQueryParams } from 'ngxtension/inject-query-params';
 
     <mat-card appearance="outlined">
       <mat-card-content>
-        <app-ticket-filters></app-ticket-filters>
+        <app-ticket-filters
+          (search)="onSearch($event)"
+          [params]="store.params()"></app-ticket-filters>
       </mat-card-content>
     </mat-card>
 
@@ -46,7 +58,8 @@ import { injectQueryParams } from 'ngxtension/inject-query-params';
     TicketFiltersComponent,
     MatCardContent,
     TicketListComponent,
-    JsonPipe
+    JsonPipe,
+    MatProgressBar
   ],
   providers: [
     TicketListStore
@@ -54,17 +67,28 @@ import { injectQueryParams } from 'ngxtension/inject-query-params';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class TicketsComponent {
+export class TicketsComponent implements OnInit {
   Role = Role;
 
   queryParams = injectQueryParams();
   router = inject(Router);
   store = inject(TicketListStore);
+  snackBar = inject(MatSnackBar);
 
   constructor() {
-    this.store.load( {
-      page: Number(this.queryParams()['_page']) ?? 0,
-      pageSize: Number(this.queryParams()['_limit']) ?? 10,
+    explicitEffect([this.store.state], ([state]) => {
+      if (state.error) {
+        this.snackBar.open(state.error, 'Close', {
+          duration: 5000
+        });
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.store.load({
+      page: this.queryParams()['_page'] ? Number(this.queryParams()['_page']) : 0,
+      pageSize: this.queryParams()['_limit'] ? Number(this.queryParams()['_limit']) : 10,
       from_date: this.queryParams()['from_date'],
       to_date: this.queryParams()['to_date'],
       inbound: this.queryParams()['inbound'],
@@ -83,5 +107,20 @@ export class TicketsComponent {
       queryParamsHandling: 'merge'
     });
     this.store.load({page: event.pageIndex, pageSize: event.pageSize});
+  }
+
+  onSearch(event: Partial<TicketListParams>) {
+    this.router.navigate([], {
+      queryParams: {
+        from_date: event.from_date,
+        to_date: event.to_date,
+        inbound: event.inbound,
+        outbound: event.outbound,
+        from_price: event.from_price,
+        to_price: event.to_price,
+      },
+      queryParamsHandling: 'merge'
+    });
+    this.store.load(event);
   }
 }

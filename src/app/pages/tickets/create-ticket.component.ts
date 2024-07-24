@@ -7,6 +7,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class CreateTicketComponent {
+export  class CreateTicketComponent {
 
 }
