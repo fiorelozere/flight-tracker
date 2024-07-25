@@ -40,6 +40,19 @@ export class TicketsService {
     return httpParams;
   }
 
+  getTicketDeals() {
+    const path = `${environment.apiUrl}/tickets`;
+    return this.http.get<Ticket[]>(path, {
+      params: new HttpParams({
+        fromObject: {
+          _limit: '6',
+          _sort: 'price',
+          _order: 'asc'
+        }
+      })
+    });
+  }
+
   createTicket(ticket: Ticket) {
     const path = `${environment.apiUrl}/tickets`;
     return this.http.post<Ticket>(path, ticket);

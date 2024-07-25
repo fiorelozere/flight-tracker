@@ -6,11 +6,13 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-ticket-list',
   template: `
-    @for (ticket of data(); track ticket.id) {
-      <app-ticket-card [ticket]="ticket"></app-ticket-card>
-    } @empty {
-      <p class="m-4">No tickets found</p>
-    }
+    <div class="tickets-grid">
+      @for (ticket of data(); track ticket.id) {
+        <app-ticket-card [ticket]="ticket"></app-ticket-card>
+      } @empty {
+        <p class="m-4">No tickets found</p>
+      }
+    </div>
     <mat-paginator [length]="total()"
                    [pageSize]="pageSize()"
                    [pageIndex]="page()"
@@ -20,6 +22,9 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
     </mat-paginator>
   `,
   standalone: true,
+  styles: `
+
+  `,
   imports: [
     TicketCardComponent,
     MatPaginator

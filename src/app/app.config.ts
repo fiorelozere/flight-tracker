@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthStore } from './auth/auth.store';
 import { authInterceptor } from './auth/auth.interceptor';
 import {MAT_DATE_LOCALE, provideNativeDateAdapter} from "@angular/material/core";
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 export function initializeApp(auth: AuthStore) {
   return () => auth.init();
@@ -32,5 +33,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([authInterceptor])),
     provideNativeDateAdapter(),
     MatSnackBar,
+    provideCharts(withDefaultRegisterables()),
   ]
 };

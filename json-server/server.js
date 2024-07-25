@@ -66,6 +66,41 @@ server.post('/tickets', (req, res, next) => {
   }
 });
 
+// Custom route to get ticket sales over time
+server.get('/dashboard/ticket-sales-over-time', (req, res) => {
+  const tickets = router.db.get('tickets').value();
+  const salesOverTime = tickets.reduce((acc, ticket) => {
+    const month = new Date(ticket.from_date).toISOString().slice(0, 7);
+    if (!acc[month]) {
+      acc[month] = 0;
+    }
+    acc[month]++;
+    return acc;
+  }, {});
+
+  res.json(salesOverTime);
+});
+
+// Custom route to get average ticket price by ticket type
+server.get('/dashboard/average-price-by-ticket-type', (req, res) => {
+  const tickets = router.db.get('tickets').value();
+  const priceByType = tickets.reduce((acc, ticket) => {
+    if (!acc[ticket.ticket_type]) {
+      acc[ticket.ticket_type] = { total: 0, count: 0 };
+    }
+    acc[ticket.ticket_type].total += ticket.price;
+    acc[ticket.ticket_type].count++;
+    return acc;
+  }, {});
+
+  const averagePriceByType = Object.keys(priceByType).reduce((acc, type) => {
+    acc[type] = priceByType[type].total / priceByType[type].count;
+    return acc;
+  }, {});
+
+  res.json(averagePriceByType);
+});
+
 
 
 // Use default router

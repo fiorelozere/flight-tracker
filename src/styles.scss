@@ -31,6 +31,10 @@ body {
   max-width: 24rem;
 }
 
+.max-w-lg {
+  max-width: 38rem;
+}
+
 .flex {
   display: flex;
 }
@@ -124,4 +128,12 @@ my-2 {
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+
+.tickets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
 }
