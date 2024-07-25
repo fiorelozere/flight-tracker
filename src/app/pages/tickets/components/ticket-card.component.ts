@@ -82,5 +82,8 @@ import { Ticket } from '../../../models/ticket.interface';
 })
 
 export class TicketCardComponent {
+  /**
+   * The ticket data to display.
+   */
   ticket = input.required<Ticket>()
 }

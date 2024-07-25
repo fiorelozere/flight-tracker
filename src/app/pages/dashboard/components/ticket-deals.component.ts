@@ -46,6 +46,9 @@ export class TicketDealsComponent implements OnInit {
     this.load();
   }
 
+  /**
+   * Loads the ticket deals.
+   */
   load = createEffect<void>(pipe(
       switchMap(() => {
           this.loading.set(true);

@@ -160,6 +160,9 @@ export class CreateTicketComponent {
     seat_number: [ '', Validators.required ]
   }, { validators: dateRangeValidator() });
 
+  /**
+   * Saves the new ticket if the form is valid.
+   */
   onSave() {
     console.log(this.form.value);
     if (this.form.invalid) {
@@ -173,6 +176,9 @@ export class CreateTicketComponent {
     } as Ticket);
   }
 
+  /**
+   * Creates a new ticket using the TicketsService.
+   */
   createTicket = createEffect<Ticket>(pipe(
       tap(() => this.loading.set(true)),
       switchMap((ticket: Ticket) =>

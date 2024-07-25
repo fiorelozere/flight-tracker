@@ -109,15 +109,26 @@ export class TicketFiltersComponent {
     });
   }
 
+  /**
+   * Parses a date string into a Date object.
+   * @param {string | null | undefined} dateString - The date string to parse.
+   * @returns {Date | null} The parsed Date object or null if the input is invalid.
+   */
   parseDate(dateString: string | null | undefined): Date | null {
     if(!dateString) return null;
     return new Date(dateString)
   }
 
+  /**
+   * Emits the search event with the current form values.
+   */
   onSearch() {
     this.search.emit(this.form.value as Partial<TicketListParams>);
   }
 
+  /**
+   * Resets the form and emits the search event with the reset values.
+   */
   onReset() {
     this.form.reset();
     this.search.emit(this.form.value as Partial<TicketListParams>);

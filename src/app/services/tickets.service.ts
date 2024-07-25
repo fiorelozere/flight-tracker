@@ -1,18 +1,29 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { TicketListParams } from '../models/ticket-state.interface';
 import { Ticket } from '../models/ticket.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class TicketsService {
   http = inject(HttpClient);
 
-  getTickets(params: TicketListParams) {
+  /**
+   * Fetches tickets based on the provided parameters.
+   * @param {TicketListParams} params - The parameters for fetching tickets.
+   * @returns {Observable<HttpResponse<Ticket[]>>} An observable containing the list of tickets.
+   */
+  getTickets(params: TicketListParams): Observable<HttpResponse<Ticket[]>> {
     const path = `${environment.apiUrl}/tickets`;
     return this.http.get<Ticket[]>(path, { observe: 'response', params: this.getParams(params) });
   }
 
+  /**
+   * Converts TicketListParams into HttpParams.
+   * @param {TicketListParams} params - The parameters to convert.
+   * @returns {HttpParams} The converted HttpParams object.
+   */
   private getParams(params: TicketListParams): HttpParams {
     let httpParams = new HttpParams()
       .set('_page', params.page.toString())
@@ -40,7 +51,11 @@ export class TicketsService {
     return httpParams;
   }
 
-  getTicketDeals() {
+  /**
+   * Fetches ticket deals.
+   * @returns {Observable<Ticket[]>} An observable containing the list of ticket deals.
+   */
+  getTicketDeals(): Observable<Ticket[]> {
     const path = `${environment.apiUrl}/tickets`;
     return this.http.get<Ticket[]>(path, {
       params: new HttpParams({
@@ -53,7 +68,12 @@ export class TicketsService {
     });
   }
 
-  createTicket(ticket: Ticket) {
+  /**
+   * Creates a new ticket.
+   * @param {Ticket} ticket - The ticket to create.
+   * @returns {Observable<Ticket>} An observable containing the created ticket.
+   */
+  createTicket(ticket: Ticket): Observable<Ticket> {
     const path = `${environment.apiUrl}/tickets`;
     return this.http.post<Ticket>(path, ticket);
   }

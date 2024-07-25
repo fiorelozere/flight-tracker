@@ -4,7 +4,7 @@ import { DashboardService } from '../../../services/dashboard.service';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { createEffect } from 'ngxtension/create-effect';
-import { catchError, map, of, pipe, switchMap, tap } from 'rxjs';
+import { catchError, map, Observable, of, pipe, switchMap, tap } from 'rxjs';
 import { DashboardChartTypeEnum } from '../../../enums/dashboard-chart-type.enum';
 import { MatButton } from '@angular/material/button';
 import { MatProgressBar } from '@angular/material/progress-bar';
@@ -77,6 +77,9 @@ export class DashboardChart implements OnInit {
 
   barChartType = 'bar' as const;
 
+  /**
+   * Loads the chart data based on the chart type.
+   */
   load = createEffect<void>(pipe(
       switchMap(() => {
           this.loading.set(true);
@@ -113,7 +116,11 @@ export class DashboardChart implements OnInit {
     this.load();
   }
 
-  getDataByType() {
+  /**
+   * Fetches the data based on the type of chart.
+   * @returns {Observable<ChartData<'bar'>>} An observable containing the chart data.
+   */
+  getDataByType(): Observable<ChartData<'bar'>> {
     switch (this.type()) {
       case DashboardChartTypeEnum.AVERAGE_PRICE:
         console.log('average price');
@@ -136,7 +143,10 @@ export class DashboardChart implements OnInit {
             }) as ChartData<'bar'>,
           ))
       default:
-        return of({})
+        return of({
+          labels: [],
+          datasets: [],
+        })
     }
   }
 

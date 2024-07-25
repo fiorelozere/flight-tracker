@@ -97,6 +97,10 @@ export class TicketsComponent implements OnInit {
     })
   }
 
+  /**
+   * Handles pagination events.
+   * @param {PageEvent} event - The pagination event.
+   */
   onPagination(event: PageEvent) {
     this.router.navigate([], {
       queryParams: {
@@ -108,6 +112,10 @@ export class TicketsComponent implements OnInit {
     this.store.load({page: event.pageIndex, pageSize: event.pageSize});
   }
 
+  /**
+   * Handles search events.
+   * @param {Partial<TicketListParams>} event - The search event parameters.
+   */
   onSearch(event: Partial<TicketListParams>) {
     this.router.navigate([], {
       queryParams: {

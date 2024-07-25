@@ -44,6 +44,9 @@ export class AuthStore {
   }
 
 
+  /**
+   * Initializes the store by setting the token from local storage if available.
+   */
   init() {
     const token = this.tokenStorage();
     if (token) {
@@ -51,10 +54,19 @@ export class AuthStore {
     }
   }
 
+  /**
+   * Sets the authentication token.
+   * @param {string | null} token - The authentication token.
+   */
   setToken(token: string | null) {
     this.token.set(token);
   }
 
+  /**
+   * Decodes the JWT token.
+   * @param {string} token - The JWT token to decode.
+   * @returns {TokenDecoded | null} The decoded token object or null if decoding fails.
+   */
   public decodeToken(token: string): TokenDecoded | null {
     try {
       return jwtDecode(token);
@@ -63,6 +75,11 @@ export class AuthStore {
     }
   }
 
+  /**
+   * Logs in the user with the provided credentials.
+   * @param {AuthPayload} payload - The authentication payload containing username and password.
+   * @returns {Observable<any>} An observable that completes when the login process is finished.
+   */
   login = createEffect<AuthPayload>(
     pipe(
       concatMap(payload =>
@@ -84,6 +101,9 @@ export class AuthStore {
     ),
   );
 
+  /**
+   * Logs out the user by clearing the token and navigating to the sign-in page.
+   */
   logout() {
     this.setToken(null);
     this.tokenStorage.set(null);

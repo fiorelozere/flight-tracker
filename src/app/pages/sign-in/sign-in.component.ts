@@ -84,11 +84,18 @@ export class SignInComponent {
     password: [ '', [ Validators.required ] ]
   });
 
+  /**
+   * Toggles the visibility of the password input.
+   * @param {MouseEvent} event - The mouse event triggered by clicking the visibility button.
+   */
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
 
+  /**
+   * Logs in the user with the provided credentials.
+   */
   login() {
     if(this.form.invalid) {
       this.errorMessage.set('Please enter your username and password')

@@ -27,9 +27,18 @@ const initialState: TicketListState = {
 export const TicketListStore = signalStore(
   withState(initialState),
   withMethods((store, ticketsService = inject(TicketsService)) => ({
-    state: () => {
+    /**
+     * Gets the current state of the store.
+     * @returns {TicketListState} The current state.
+     */
+    state: (): TicketListState => {
       return getState(store);
     },
+    /**
+     * Loads the tickets based on the provided parameters.
+     * @param {Partial<TicketListParams>} params - The parameters for loading tickets.
+     * @returns {void}
+     */
     load: rxMethod<Partial<TicketListParams>>(
       pipe(
         tap(() => patchState(store, {loading: true})),
