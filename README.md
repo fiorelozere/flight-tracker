@@ -89,7 +89,8 @@ The JSON Server will be running on `http://localhost:3000`.
 
 ## UML Diagram
 
-
+# Flight Tracker UML Diagram
+![uml.svg](screenshots/uml.svg)
 
 ## Documentation
 
