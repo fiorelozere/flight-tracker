@@ -60,6 +60,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/CreateTicketComponent.html" data-type="entity-link" >CreateTicketComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/DashboardChart.html" data-type="entity-link" >DashboardChart</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/DashboardComponent.html" data-type="entity-link" >DashboardComponent</a>
                             </li>
                             <li class="link">
@@ -70,6 +73,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="components/TicketCardComponent.html" data-type="entity-link" >TicketCardComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/TicketDealsComponent.html" data-type="entity-link" >TicketDealsComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/TicketFiltersComponent.html" data-type="entity-link" >TicketFiltersComponent</a>
@@ -111,6 +117,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="injectables/AuthStore.html" data-type="entity-link" >AuthStore</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/DashboardService.html" data-type="entity-link" >DashboardService</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/LayoutService.html" data-type="entity-link" >LayoutService</a>

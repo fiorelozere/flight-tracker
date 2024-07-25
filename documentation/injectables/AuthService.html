@@ -190,14 +190,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="13"
-                                    class="link-to-prism">src/app/auth/auth.service.ts:13</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="18"
+                                    class="link-to-prism">src/app/auth/auth.service.ts:18</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Logs in the user with the provided credentials.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -208,6 +210,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -222,6 +225,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The authentication payload containing username and password.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -231,7 +240,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable containing the authentication token.</p>
+
                             </div>
                 </td>
             </tr>
@@ -286,6 +296,11 @@ import { AuthPayload } from &#x27;../models/auth-payload.interface&#x27;;
 export class AuthService {
   http &#x3D; inject(HttpClient);
 
+  /**
+   * Logs in the user with the provided credentials.
+   * @param {AuthPayload} payload - The authentication payload containing username and password.
+   * @returns {Observable&lt;{ token: string }&gt;} An observable containing the authentication token.
+   */
   login(payload: AuthPayload): Observable&lt;{ token: string }&gt; {
     const path &#x3D; &#x60;${ environment.apiUrl }/login&#x60;
     return this.http.post&lt;{ token: string }&gt;(path, payload);

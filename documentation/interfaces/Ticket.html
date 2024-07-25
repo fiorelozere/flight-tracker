@@ -103,15 +103,15 @@
 
 <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-            <a href="#info"
+            <a href="#info" 
                 class="nav-link"
                 class="nav-link active"
                 role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
         <li class="nav-item">
-            <a href="#source"
+            <a href="#source" 
                 class="nav-link"
-
+                
                 role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
@@ -141,55 +141,56 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#from_date"
+                                        <a href="#from_date" 
 >
                                             from_date
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#id"
+                                            <span class="modifier">Optional</span>
+                                        <a href="#id" 
 >
                                             id
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#inbound"
+                                        <a href="#inbound" 
 >
                                             inbound
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#outbound"
+                                        <a href="#outbound" 
 >
                                             outbound
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#price"
+                                        <a href="#price" 
 >
                                             price
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#seat_number"
+                                        <a href="#seat_number" 
 >
                                             seat_number
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#ticket_type"
+                                        <a href="#ticket_type" 
 >
                                             ticket_type
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#ticket_type_id"
+                                        <a href="#ticket_type_id" 
 >
                                             ticket_type_id
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#to_date"
+                                        <a href="#to_date" 
 >
                                             to_date
                                         </a>
@@ -265,6 +266,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -508,7 +514,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Ticket {
-  id: string;
+  id?: number;
   inbound: string;
   outbound: string;
   ticket_type: string;

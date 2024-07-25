@@ -89,7 +89,7 @@
   <li class="breadcrumb-item">Components</li>
   <li class="breadcrumb-item"
   >
-  TicketCardComponent</li>
+  TicketDealsComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -102,10 +102,6 @@
                 role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
         <li class="nav-item">
-            <a href="#styleData" class="nav-link"
-                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li class="nav-item">
             <a href="#tree" class="nav-link"
                 role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
@@ -116,12 +112,18 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/pages/tickets/components/ticket-card.component.ts</code>
+    <code>src/app/pages/dashboard/components/ticket-deals.component.ts</code>
 </p>
 
 
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
 
 
 <section data-compodoc="block-metadata">
@@ -129,10 +131,6 @@
     <table class="table table-sm table-hover metadata">
         <tbody>
 
-            <tr>
-                <td class="col-md-3">changeDetection</td>
-                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
-            </tr>
 
 
 
@@ -146,7 +144,7 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-ticket-card</code></td>
+                <td class="col-md-9"><code>app-ticket-deals</code></td>
             </tr>
 
             <tr>
@@ -158,73 +156,30 @@
                 <td class="col-md-3">imports</td>
                 <td class="col-md-9">
                             <code>MatCard</code>
-                            <code>MatCardHeader</code>
                             <code>MatCardContent</code>
-                            <code>DatePipe</code>
-                            <code>MatCardFooter</code>
-                            <code>MatCardSubtitle</code>
+                            <code>MatCardHeader</code>
                             <code>MatCardTitle</code>
+                                <code><a href="../components/TicketCardComponent.html" target="_self" >TicketCardComponent</a></code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-3">styles</td>
-                <td class="col-md-9"><code>
-      .flight-ticket-card {
-        margin: 16px;
-        padding: 16px;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      mat-card-header {
-        background-color: #d7e3ff;
-        color: #005cbb;
-        padding: 16px;
-        border-bottom: 1px solid #e0e0e0;
-      }
-
-      mat-card-title {
-        font-weight: bold;
-        font-size: 1.5em;
-      }
-
-      mat-card-subtitle {
-        font-size: 1.2em;
-        color: #757575;
-      }
-
-      mat-card-content p {
-        margin: 8px 0;
-      }
-
-      mat-card-footer {
-        padding: 16px;
-        color: #005cbb;
-        background-color: #d7e3ff;
-        border-top: 1px solid #e0e0e0;
-        text-align: right;
-      }
-    </code></td>
-            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;mat-card class&#x3D;&quot;flight-ticket-card&quot;&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;mat-card appearance&#x3D;&quot;outlined&quot; class&#x3D;&quot;my-4 mx-2 w-full&quot;&gt;
   &lt;mat-card-header&gt;
-    &lt;mat-card-title&gt;{{ ticket().inbound }} to {{ ticket().outbound }}&lt;/mat-card-title&gt;
-    &lt;mat-card-subtitle&gt;{{ ticket().ticket_type }} - Seat: {{ ticket().seat_number }}&lt;/mat-card-subtitle&gt;
+    &lt;mat-card-title&gt;Deals&lt;/mat-card-title&gt;
   &lt;/mat-card-header&gt;
   &lt;mat-card-content&gt;
-    &lt;p&gt;&lt;strong&gt;Departure:&lt;/strong&gt; {{ ticket().from_date }}&lt;/p&gt;
-    &lt;p&gt;&lt;strong&gt;Return:&lt;/strong&gt; {{ ticket().to_date }}&lt;/p&gt;
-    &lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $ {{ ticket().price }}&lt;/p&gt;
+    &lt;div class&#x3D;&quot;tickets-grid&quot;&gt;
+      @for (ticket of data(); track ticket.id) {
+        &lt;app-ticket-card [ticket]&#x3D;&quot;ticket&quot;&gt;&lt;/app-ticket-card&gt;
+      } @empty {
+        &lt;p class&#x3D;&quot;m-4&quot;&gt;No tickets found&lt;/p&gt;
+      }
+    &lt;/div&gt;
   &lt;/mat-card-content&gt;
-  &lt;mat-card-footer&gt;
-    &lt;p&gt;Ticket ID: {{ ticket().ticket_type_id }}&lt;/p&gt;
-  &lt;/mat-card-footer&gt;
 &lt;/mat-card&gt;
 </code></pre></td>
             </tr>
@@ -254,27 +209,39 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#ticket" >ticket</a>
+                                <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#load" >load</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#tickets" >tickets</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
 
-
                 <tr>
                     <td class="col-md-4">
-                        <h6><b>Inputs</b></h6>
+                        <h6><b>Methods</b></h6>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#ticket" >ticket</a>
+                                <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
+
 
 
 
@@ -284,39 +251,53 @@
 </section>
 
 
-    <section data-compodoc="block-inputs">
-    <h3 id="inputs">Inputs</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="ticket"></a>
-                        <b>ticket</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Required : </i>&nbsp;<b>true</b>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/pages/tickets/components/ticket-card.component.ts:88</a></div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>The ticket data to display.</p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/pages/dashboard/components/ticket-deals.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
-
-
-
-
     <section data-compodoc="block-properties">
     
     <h3 id="inputs">
@@ -326,25 +307,149 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="ticket"></a>
+                    <a name="data"></a>
                     <span class="name">
-                        <span ><b>ticket</b></span>
-                        <a href="#ticket"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>data</b></span>
+                        <a href="#data"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;Ticket[]&gt;([])</code>
+                    </td>
+                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/pages/tickets/components/ticket-card.component.ts:88</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/pages/dashboard/components/ticket-deals.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;string | null&gt;(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/pages/dashboard/components/ticket-deals.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="load"></a>
+                    <span class="name">
+                        <span ><b>load</b></span>
+                        <a href="#load"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect&lt;void&gt;(pipe(
+      switchMap(() &#x3D;&gt; {
+          this.loading.set(true);
+          console.log(&#x27;here&#x27;);
+          return this.tickets.getTicketDeals().pipe(
+            tap((data) &#x3D;&gt; {
+              this.loading.set(false);
+              this.error.set(null);
+              this.data.set(data);
+            }),
+            catchError((error) &#x3D;&gt; {
+              this.loading.set(false);
+              this.error.set(&#x27;Something went wrong. Please try again.&#x27;);
+              return of({});
+            })
+          )
+        }
+      ),
+    ),
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/pages/dashboard/components/ticket-deals.component.ts:52</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>The ticket data to display.</p>
+                    <div class="io-description"><p>Loads the ticket deals.</p>
 </div>
                 </td>
             </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/pages/dashboard/components/ticket-deals.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tickets"></a>
+                    <span class="name">
+                        <span ><b>tickets</b></span>
+                        <a href="#tickets"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(TicketsService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/dashboard/components/ticket-deals.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
 
         </tbody>
     </table>
@@ -354,140 +459,82 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, input, OnInit } from &#x27;@angular/core&#x27;;
-import {
-  MatCard,
-  MatCardContent,
-  MatCardFooter,
-  MatCardHeader,
-  MatCardSubtitle,
-  MatCardTitle
-} from &#x27;@angular/material/card&#x27;;
-import { DatePipe } from &#x27;@angular/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject, OnInit, signal } from &#x27;@angular/core&#x27;;
+import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from &#x27;@angular/material/card&#x27;;
+import { TicketCardComponent } from &#x27;../../tickets/components/ticket-card.component&#x27;;
 import { Ticket } from &#x27;../../../models/ticket.interface&#x27;;
+import { createEffect } from &#x27;ngxtension/create-effect&#x27;;
+import { catchError, of, pipe, switchMap, tap } from &#x27;rxjs&#x27;;
+import { ChartData } from &#x27;chart.js&#x27;;
+import { TicketsService } from &#x27;../../../services/tickets.service&#x27;;
 
 @Component({
-  selector: &#x27;app-ticket-card&#x27;,
+  selector: &#x27;app-ticket-deals&#x27;,
   template: &#x60;
-    &lt;mat-card class&#x3D;&quot;flight-ticket-card&quot;&gt;
+    &lt;mat-card appearance&#x3D;&quot;outlined&quot; class&#x3D;&quot;my-4 mx-2 w-full&quot;&gt;
       &lt;mat-card-header&gt;
-        &lt;mat-card-title&gt;{{ ticket().inbound }} to {{ ticket().outbound }}&lt;/mat-card-title&gt;
-        &lt;mat-card-subtitle&gt;{{ ticket().ticket_type }} - Seat: {{ ticket().seat_number }}&lt;/mat-card-subtitle&gt;
+        &lt;mat-card-title&gt;Deals&lt;/mat-card-title&gt;
       &lt;/mat-card-header&gt;
       &lt;mat-card-content&gt;
-        &lt;p&gt;&lt;strong&gt;Departure:&lt;/strong&gt; {{ ticket().from_date }}&lt;/p&gt;
-        &lt;p&gt;&lt;strong&gt;Return:&lt;/strong&gt; {{ ticket().to_date }}&lt;/p&gt;
-        &lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $ {{ ticket().price }}&lt;/p&gt;
+        &lt;div class&#x3D;&quot;tickets-grid&quot;&gt;
+          @for (ticket of data(); track ticket.id) {
+            &lt;app-ticket-card [ticket]&#x3D;&quot;ticket&quot;&gt;&lt;/app-ticket-card&gt;
+          } @empty {
+            &lt;p class&#x3D;&quot;m-4&quot;&gt;No tickets found&lt;/p&gt;
+          }
+        &lt;/div&gt;
       &lt;/mat-card-content&gt;
-      &lt;mat-card-footer&gt;
-        &lt;p&gt;Ticket ID: {{ ticket().ticket_type_id }}&lt;/p&gt;
-      &lt;/mat-card-footer&gt;
     &lt;/mat-card&gt;
   &#x60;,
-  standalone: true,
   imports: [
     MatCard,
-    MatCardHeader,
     MatCardContent,
-    DatePipe,
-    MatCardFooter,
-    MatCardSubtitle,
-    MatCardTitle
+    MatCardHeader,
+    MatCardTitle,
+    TicketCardComponent
   ],
-  styles: [
-    &#x60;
-      .flight-ticket-card {
-        margin: 16px;
-        padding: 16px;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      mat-card-header {
-        background-color: #d7e3ff;
-        color: #005cbb;
-        padding: 16px;
-        border-bottom: 1px solid #e0e0e0;
-      }
-
-      mat-card-title {
-        font-weight: bold;
-        font-size: 1.5em;
-      }
-
-      mat-card-subtitle {
-        font-size: 1.2em;
-        color: #757575;
-      }
-
-      mat-card-content p {
-        margin: 8px 0;
-      }
-
-      mat-card-footer {
-        padding: 16px;
-        color: #005cbb;
-        background-color: #d7e3ff;
-        border-top: 1px solid #e0e0e0;
-        text-align: right;
-      }
-    &#x60;
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  standalone: true
 })
 
-export class TicketCardComponent {
+export class TicketDealsComponent implements OnInit {
+
+  data &#x3D; signal&lt;Ticket[]&gt;([]);
+  loading &#x3D; signal(false);
+  error &#x3D; signal&lt;string | null&gt;(null);
+  tickets &#x3D; inject(TicketsService);
+
+  ngOnInit() {
+    this.load();
+  }
+
   /**
-   * The ticket data to display.
+   * Loads the ticket deals.
    */
-  ticket &#x3D; input.required&lt;Ticket&gt;()
+  load &#x3D; createEffect&lt;void&gt;(pipe(
+      switchMap(() &#x3D;&gt; {
+          this.loading.set(true);
+          console.log(&#x27;here&#x27;);
+          return this.tickets.getTicketDeals().pipe(
+            tap((data) &#x3D;&gt; {
+              this.loading.set(false);
+              this.error.set(null);
+              this.data.set(data);
+            }),
+            catchError((error) &#x3D;&gt; {
+              this.loading.set(false);
+              this.error.set(&#x27;Something went wrong. Please try again.&#x27;);
+              return of({});
+            })
+          )
+        }
+      ),
+    ),
+  )
 }
 </code></pre>
     </div>
 
 
-    <div class="tab-pane fade " id="styleData">
-            <pre class="line-numbers"><code class="language-scss">
-      .flight-ticket-card {
-        margin: 16px;
-        padding: 16px;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      mat-card-header {
-        background-color: #d7e3ff;
-        color: #005cbb;
-        padding: 16px;
-        border-bottom: 1px solid #e0e0e0;
-      }
-
-      mat-card-title {
-        font-weight: bold;
-        font-size: 1.5em;
-      }
-
-      mat-card-subtitle {
-        font-size: 1.2em;
-        color: #757575;
-      }
-
-      mat-card-content p {
-        margin: 8px 0;
-      }
-
-      mat-card-footer {
-        padding: 16px;
-        color: #005cbb;
-        background-color: #d7e3ff;
-        border-top: 1px solid #e0e0e0;
-        text-align: right;
-      }
-    
-</code></pre>
-    </div>
 
     <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
@@ -514,10 +561,10 @@ export class TicketCardComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-card class="flight-ticket-card">  <mat-card-header>    <mat-card-title>{{ ticket().inbound }} to {{ ticket().outbound }}</mat-card-title>    <mat-card-subtitle>{{ ticket().ticket_type }} - Seat: {{ ticket().seat_number }}</mat-card-subtitle>  </mat-card-header>  <mat-card-content>    <p><strong>Departure:</strong> {{ ticket().from_date }}</p>    <p><strong>Return:</strong> {{ ticket().to_date }}</p>    <p><strong>Price:</strong> $ {{ ticket().price }}</p>  </mat-card-content>  <mat-card-footer>    <p>Ticket ID: {{ ticket().ticket_type_id }}</p>  </mat-card-footer></mat-card></div>'
+        var COMPONENT_TEMPLATE = '<div><mat-card appearance="outlined" class="my-4 mx-2 w-full">  <mat-card-header>    <mat-card-title>Deals</mat-card-title>  </mat-card-header>  <mat-card-content>    <div class="tickets-grid">      @for (ticket of data(); track ticket.id) {        <app-ticket-card [ticket]="ticket"></app-ticket-card>      } @empty {        <p class="m-4">No tickets found</p>      }    </div>  </mat-card-content></mat-card></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateTicketComponent', 'selector': 'app-create-ticket'},{'name': 'DashboardChart', 'selector': 'app-dashboard-chart'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'TicketCardComponent', 'selector': 'app-ticket-card'},{'name': 'TicketDealsComponent', 'selector': 'app-ticket-deals'},{'name': 'TicketFiltersComponent', 'selector': 'app-ticket-filters'},{'name': 'TicketListComponent', 'selector': 'app-ticket-list'},{'name': 'TicketsComponent', 'selector': 'app-tickets'},{'name': 'ToolbarComponent', 'selector': 'app-toolbar'}];
     var DIRECTIVES = [{'name': 'RoleDirective', 'selector': '[role]'}];
-    var ACTUAL_COMPONENT = {'name': 'TicketCardComponent'};
+    var ACTUAL_COMPONENT = {'name': 'TicketDealsComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -563,7 +610,7 @@ export class TicketCardComponent {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'TicketCardComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'TicketDealsComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -241,14 +241,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/app/auth/auth.store.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/auth/auth.store.ts:70</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Decodes the JWT token.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -259,6 +261,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -273,6 +276,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The JWT token to decode.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -282,7 +291,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>The decoded token object or null if decoding fails.</p>
+
                             </div>
                 </td>
             </tr>
@@ -308,14 +318,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="45"
-                                    class="link-to-prism">src/app/auth/auth.store.ts:45</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/auth/auth.store.ts:50</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Initializes the store by setting the token from local storage if available.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -345,14 +357,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="81"
-                                    class="link-to-prism">src/app/auth/auth.store.ts:81</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/app/auth/auth.store.ts:107</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Logs out the user by clearing the token and navigating to the sign-in page.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -382,14 +396,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/auth/auth.store.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/auth/auth.store.ts:61</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Sets the authentication token.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -400,6 +416,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -414,6 +431,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The authentication token.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -507,7 +530,11 @@
             this.router.navigateByUrl(&#x27;/dashboard&#x27;);
             return response;
           }), catchError(err &#x3D;&gt; {
-            this.snackBar.open(&#x27;Wrong credentials&#x27;, &#x27;Dismiss&#x27;, { duration: 5000 });
+            if(err.status &#x3D;&#x3D;&#x3D; 401) {
+              this.snackBar.open(&#x27;Wrong credentials&#x27;, &#x27;Dismiss&#x27;, { duration: 5000 });
+            } else {
+              this.snackBar.open(&#x27;An error occurred&#x27;, &#x27;Dismiss&#x27;, { duration: 5000 });
+            }
             return throwError(() &#x3D;&gt; err);
           })
         )
@@ -518,11 +545,43 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/auth/auth.store.ts:64</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/auth/auth.store.ts:83</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Logs in the user with the provided credentials.</p>
+</div>
+                </td>
+            </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>payload</td>
+                                                    <td>
+                                                            <code><ul>
+<li>The authentication payload containing username and password.</li>
+</ul>
+</code>
+                                                    </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
         </tbody>
     </table>
     <table class="table table-sm table-bordered">
@@ -664,7 +723,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { computed, effect, inject, Injectable, signal } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { computed, inject, Injectable, signal } from &#x27;@angular/core&#x27;;
 import { jwtDecode } from &#x27;jwt-decode&#x27;;
 import { TokenDecoded } from &#x27;../models/token-decoded.interface&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
@@ -704,10 +763,15 @@ export class AuthStore {
       } else {
         this.router.navigateByUrl(&#x27;/sign-in&#x27;);
       }
+    }, {
+      defer: true
     });
   }
 
 
+  /**
+   * Initializes the store by setting the token from local storage if available.
+   */
   init() {
     const token &#x3D; this.tokenStorage();
     if (token) {
@@ -715,10 +779,19 @@ export class AuthStore {
     }
   }
 
+  /**
+   * Sets the authentication token.
+   * @param {string | null} token - The authentication token.
+   */
   setToken(token: string | null) {
     this.token.set(token);
   }
 
+  /**
+   * Decodes the JWT token.
+   * @param {string} token - The JWT token to decode.
+   * @returns {TokenDecoded | null} The decoded token object or null if decoding fails.
+   */
   public decodeToken(token: string): TokenDecoded | null {
     try {
       return jwtDecode(token);
@@ -727,6 +800,11 @@ export class AuthStore {
     }
   }
 
+  /**
+   * Logs in the user with the provided credentials.
+   * @param {AuthPayload} payload - The authentication payload containing username and password.
+   * @returns {Observable&lt;any&gt;} An observable that completes when the login process is finished.
+   */
   login &#x3D; createEffect&lt;AuthPayload&gt;(
     pipe(
       concatMap(payload &#x3D;&gt;
@@ -736,7 +814,11 @@ export class AuthStore {
             this.router.navigateByUrl(&#x27;/dashboard&#x27;);
             return response;
           }), catchError(err &#x3D;&gt; {
-            this.snackBar.open(&#x27;Wrong credentials&#x27;, &#x27;Dismiss&#x27;, { duration: 5000 });
+            if(err.status &#x3D;&#x3D;&#x3D; 401) {
+              this.snackBar.open(&#x27;Wrong credentials&#x27;, &#x27;Dismiss&#x27;, { duration: 5000 });
+            } else {
+              this.snackBar.open(&#x27;An error occurred&#x27;, &#x27;Dismiss&#x27;, { duration: 5000 });
+            }
             return throwError(() &#x3D;&gt; err);
           })
         )
@@ -744,6 +826,9 @@ export class AuthStore {
     ),
   );
 
+  /**
+   * Logs out the user by clearing the token and navigating to the sign-in page.
+   */
   logout() {
     this.setToken(null);
     this.tokenStorage.set(null);

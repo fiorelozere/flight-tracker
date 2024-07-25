@@ -150,8 +150,14 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#createTicket" >createTicket</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#getParams" >getParams</a>
+                            </li>
+                            <li>
+                                <a href="#getTicketDeals" >getTicketDeals</a>
                             </li>
                             <li>
                                 <a href="#getTickets" >getTickets</a>
@@ -178,6 +184,83 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="createTicket"></a>
+                    <span class="name">
+                        <span ><b>createTicket</b></span>
+                        <a href="#createTicket"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createTicket(ticket: <a href="../interfaces/Ticket.html" target="_self">Ticket</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/app/services/tickets.service.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Creates a new ticket.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ticket</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Ticket.html" target="_self" >Ticket</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The ticket to create.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Ticket.html" target="_self" >Observable&lt;Ticket&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>An observable containing the created ticket.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getParams"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
@@ -196,14 +279,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="16"
-                                    class="link-to-prism">src/app/services/tickets.service.ts:16</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app/services/tickets.service.ts:27</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Converts TicketListParams into HttpParams.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -214,6 +299,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -228,6 +314,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The parameters to convert.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -237,7 +329,51 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>The converted HttpParams object.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTicketDeals"></a>
+                    <span class="name">
+                        <span ><b>getTicketDeals</b></span>
+                        <a href="#getTicketDeals"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTicketDeals()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/services/tickets.service.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Fetches ticket deals.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Ticket.html" target="_self" >Observable&lt;Ticket[]&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>An observable containing the list of ticket deals.</p>
+
                             </div>
                 </td>
             </tr>
@@ -263,14 +399,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="11"
-                                    class="link-to-prism">src/app/services/tickets.service.ts:11</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/app/services/tickets.service.ts:17</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Fetches tickets based on the provided parameters.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -281,6 +419,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -295,16 +434,23 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The parameters for fetching tickets.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>        <code><a href="../interfaces/Ticket.html" target="_self" >Observable&lt;HttpResponse&lt;Ticket[]&gt;&gt;</a></code>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An observable containing the list of tickets.</p>
+
                             </div>
                 </td>
             </tr>
@@ -334,7 +480,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/services/tickets.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/services/tickets.service.ts:10</a></div>
                         </td>
                     </tr>
 
@@ -348,30 +494,41 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { inject, Injectable } from &#x27;@angular/core&#x27;;
-import { HttpClient, HttpParams } from &#x27;@angular/common/http&#x27;;
+import { HttpClient, HttpParams, HttpResponse } from &#x27;@angular/common/http&#x27;;
 import { environment } from &#x27;../../environments/environment&#x27;;
 import { TicketListParams } from &#x27;../models/ticket-state.interface&#x27;;
 import { Ticket } from &#x27;../models/ticket.interface&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
 
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class TicketsService {
   http &#x3D; inject(HttpClient);
 
-  getTickets(params: TicketListParams) {
+  /**
+   * Fetches tickets based on the provided parameters.
+   * @param {TicketListParams} params - The parameters for fetching tickets.
+   * @returns {Observable&lt;HttpResponse&lt;Ticket[]&gt;&gt;} An observable containing the list of tickets.
+   */
+  getTickets(params: TicketListParams): Observable&lt;HttpResponse&lt;Ticket[]&gt;&gt; {
     const path &#x3D; &#x60;${environment.apiUrl}/tickets&#x60;;
     return this.http.get&lt;Ticket[]&gt;(path, { observe: &#x27;response&#x27;, params: this.getParams(params) });
   }
 
+  /**
+   * Converts TicketListParams into HttpParams.
+   * @param {TicketListParams} params - The parameters to convert.
+   * @returns {HttpParams} The converted HttpParams object.
+   */
   private getParams(params: TicketListParams): HttpParams {
     let httpParams &#x3D; new HttpParams()
       .set(&#x27;_page&#x27;, params.page.toString())
       .set(&#x27;_limit&#x27;, params.pageSize.toString());
 
     if (params.from_date) {
-      httpParams &#x3D; httpParams.set(&#x27;from_date&#x27;, params.from_date);
+      httpParams &#x3D; httpParams.set(&#x27;from_date_gte&#x27;, new Date(params.from_date).toLocaleDateString());
     }
     if (params.to_date) {
-      httpParams &#x3D; httpParams.set(&#x27;to_date&#x27;, params.to_date);
+      httpParams &#x3D; httpParams.set(&#x27;to_date_lte&#x27;, new Date(params.to_date).toLocaleDateString());
     }
     if (params.inbound) {
       httpParams &#x3D; httpParams.set(&#x27;inbound_like&#x27;, params.inbound);
@@ -380,13 +537,40 @@ export class TicketsService {
       httpParams &#x3D; httpParams.set(&#x27;outbound_like&#x27;, params.outbound);
     }
     if (params.from_price !&#x3D;&#x3D; null &amp;&amp; params.from_price !&#x3D;&#x3D; undefined) {
-      httpParams &#x3D; httpParams.set(&#x27;from_price_gte&#x27;, params.from_price.toString());
+      httpParams &#x3D; httpParams.set(&#x27;price_gte&#x27;, params.from_price.toString());
     }
     if (params.to_price !&#x3D;&#x3D; null &amp;&amp; params.to_price !&#x3D;&#x3D; undefined) {
-      httpParams &#x3D; httpParams.set(&#x27;to_price_lte&#x27;, params.to_price.toString());
+      httpParams &#x3D; httpParams.set(&#x27;price_lte&#x27;, params.to_price.toString());
     }
 
     return httpParams;
+  }
+
+  /**
+   * Fetches ticket deals.
+   * @returns {Observable&lt;Ticket[]&gt;} An observable containing the list of ticket deals.
+   */
+  getTicketDeals(): Observable&lt;Ticket[]&gt; {
+    const path &#x3D; &#x60;${environment.apiUrl}/tickets&#x60;;
+    return this.http.get&lt;Ticket[]&gt;(path, {
+      params: new HttpParams({
+        fromObject: {
+          _limit: &#x27;6&#x27;,
+          _sort: &#x27;price&#x27;,
+          _order: &#x27;asc&#x27;
+        }
+      })
+    });
+  }
+
+  /**
+   * Creates a new ticket.
+   * @param {Ticket} ticket - The ticket to create.
+   * @returns {Observable&lt;Ticket&gt;} An observable containing the created ticket.
+   */
+  createTicket(ticket: Ticket): Observable&lt;Ticket&gt; {
+    const path &#x3D; &#x60;${environment.apiUrl}/tickets&#x60;;
+    return this.http.post&lt;Ticket&gt;(path, ticket);
   }
 }
 

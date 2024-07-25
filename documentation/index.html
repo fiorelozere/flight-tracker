@@ -82,20 +82,108 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1>FlightTracker</h1>
-<p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 18.1.1.</p>
-<h2>Development server</h2>
-<p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The application will automatically reload if you change any of the source files.</p>
-<h2>Code scaffolding</h2>
-<p>Run <code>ng generate component component-name</code> to generate a new component. You can also use <code>ng generate directive|pipe|service|class|guard|interface|enum|module</code>.</p>
-<h2>Build</h2>
-<p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory.</p>
-<h2>Running unit tests</h2>
-<p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
-<h2>Running end-to-end tests</h2>
-<p>Run <code>ng e2e</code> to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.</p>
-<h2>Further help</h2>
-<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://angular.dev/tools/cli">Angular CLI Overview and Command Reference</a> page.</p>
+<h1>Flight Tracker</h1>
+<h2>Overview</h2>
+<p>Flight Tracker is an Angular application for managing and tracking flight tickets. The application supports two roles: Admin and User. Users can view and filter tickets, while Admins have additional privileges, including the ability to create multiple tickets simultaneously without redirection.</p>
+<h2>Features</h2>
+<ul>
+<li><strong>Login Page</strong>: Users can log in with roles Admin and User.</li>
+<li><strong>User Role</strong>:<ul>
+<li>View all tickets.</li>
+<li>Filter tickets.</li>
+<li>View dashboard</li>
+</ul>
+</li>
+<li><strong>Admin Role</strong>:<ul>
+<li>Same privileges as User.</li>
+<li>Create multiple tickets in the same form without redirection.</li>
+</ul>
+</li>
+<li><strong>Ticket Fields</strong>:<ul>
+<li><code>id</code></li>
+<li><code>inbound</code></li>
+<li><code>outbound</code></li>
+<li><code>ticket_type</code></li>
+<li><code>ticket_type_id</code> (combination of the id and ticket_type)</li>
+<li><code>price</code></li>
+<li><code>from_date</code></li>
+<li><code>to_date</code> or <code>date_range</code></li>
+<li><code>seat_number</code></li>
+</ul>
+</li>
+<li><strong>Validation</strong>:<ul>
+<li>No duplicate tickets for the same inbound, outbound, from, to, and seat_number values.</li>
+<li>Price should be a positive number.</li>
+<li>From date should be before the to date.</li>
+</ul>
+</li>
+<li><strong>Dashboard</strong>:<ul>
+<li><strong>Average Price By Ticket Type</strong>: Average price of tickets by ticket type.</li>
+<li><strong>Ticket Sales Over Time</strong>: Number of tickets sold over time.</li>
+<li><strong>Deals</strong>: Special deals for users.</li>
+</ul>
+</li>
+<li><strong>Chart</strong>: Visualization based on ticket data.</li>
+</ul>
+<h2>Others</h2>
+<ul>
+<li><strong>Window Communication</strong>: Actions on one window reflect on another window on auth part.</li>
+</ul>
+<h2>Prerequisites</h2>
+<ul>
+<li>Node.js (v20 or above)</li>
+<li>npm (v10 or above)</li>
+<li>Angular CLI (v18.1.1)</li>
+<li>json-server (v0.17.0)</li>
+</ul>
+<h2>Setup</h2>
+<ol>
+<li><strong>Clone the repository</strong>:</li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">git clone https://github.com/your-repo/flight-tracker.git
+cd flight-tracker</code></pre></div><ol start="2">
+<li><strong>Install dependencies</strong>:</li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm install
+cd json-server &amp;&amp; npm install</code></pre></div><h2>Running the Application</h2>
+<h3>Angular Development Server</h3>
+<ol>
+<li><strong>Start Angular development server</strong>:</li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm start</code></pre></div><ol start="2">
+<li>Open your browser and navigate to <code>http://localhost:4200</code>.</li>
+</ol>
+<h3>JSON Server</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">cd json-server &amp;&amp; npm run dev</code></pre></div><ol start="2">
+<li><strong>Run migrations optionally:</strong></li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">cd json-server &amp;&amp; npm run migrate</code></pre></div><p>The JSON Server will be running on <code>http://localhost:3000</code>.</p>
+<h2>UML Diagram</h2>
+<h1>Flight Tracker UML Diagram</h1>
+<p><img src="screenshots/uml.svg" alt="uml.svg" class="img-responsive"></p>
+<h2>Documentation</h2>
+<p>Generate documentation using Compodoc:</p>
+<ol>
+<li><strong>Generate documentation</strong>:</li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm run compodoc</code></pre></div><ol start="2">
+<li><strong>Serve the documentation</strong>:</li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npx compodoc -s</code></pre></div><ol start="3">
+<li>Open your browser and navigate to <code>http://localhost:8080</code> to view the documentation.</li>
+</ol>
+<h2>Functionalities</h2>
+<ul>
+<li><strong>Login Page</strong>: Authenticate as Admin or User.
+<img src="./screenshots/sign-in.png" alt="sign-in.png" class="img-responsive"></li>
+<li><strong>View and Filter Tickets</strong>: Users and Admins can view and filter tickets.
+<img src="./screenshots/tickets.png" alt="sign-in.png" class="img-responsive"></li>
+<li><strong>Create Tickets</strong>: Admins can create multiple tickets without redirection.
+<img src="./screenshots/create-tickets.png" alt="sign-in.png" class="img-responsive"></li>
+<li><strong>Validation</strong>: Ensure no duplicate tickets are created.</li>
+<li><strong>Charts</strong>: Visualize data such as revenue by ticket type, ticket sales over time, and average ticket price by ticket type.
+<img src="./screenshots/dashboard.png" alt="dashboard.png" class="img-responsive"></li>
+</ul>
 
 
 

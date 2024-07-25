@@ -1,0 +1,1027 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>flight-tracker documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">flight-tracker documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DashboardChart</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/dashboard/components/dashboard-chart.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-dashboard-chart</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>BaseChartDirective</code>
+                            <code>MatCard</code>
+                            <code>MatCardContent</code>
+                            <code>MatCardHeader</code>
+                            <code>MatCardTitle</code>
+                            <code>MatButton</code>
+                            <code>MatProgressBar</code>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;mat-card appearance&#x3D;&quot;outlined&quot; class&#x3D;&quot;my-4 mx-2 w-full&quot;&gt;
+  &lt;mat-card-header&gt;
+    &lt;mat-card-title&gt;{{ label() }}&lt;/mat-card-title&gt;
+  &lt;/mat-card-header&gt;
+  &lt;mat-card-content&gt;
+    &lt;div class&#x3D;&quot;h-10&quot;&gt;
+      @if (loading()) {
+        &lt;mat-progress-bar mode&#x3D;&quot;query&quot;&gt;&lt;/mat-progress-bar&gt;
+      }
+    &lt;/div&gt;
+    &lt;canvas
+      [data]&#x3D;&quot;data()&quot;
+      [options]&#x3D;&quot;barChartOptions&quot;
+      [type]&#x3D;&quot;barChartType&quot;
+      baseChart&gt;
+    &lt;/canvas&gt;
+    @if (error()) {
+      &lt;p class&#x3D;&quot;m-4&quot;&gt;{{ error() }}&lt;/p&gt;
+      &lt;button mat-flat-button (click)&#x3D;&quot;this.load()&quot;&gt;Retry&lt;/button&gt;
+    }
+  &lt;/mat-card-content&gt;
+&lt;/mat-card&gt;
+
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#barChartOptions" >barChartOptions</a>
+                            </li>
+                            <li>
+                                <a href="#barChartType" >barChartType</a>
+                            </li>
+                            <li>
+                                <a href="#chart" >chart</a>
+                            </li>
+                            <li>
+                                <a href="#dashboard" >dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#injector" >injector</a>
+                            </li>
+                            <li>
+                                <a href="#label" >label</a>
+                            </li>
+                            <li>
+                                <a href="#load" >load</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#type" >type</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getDataByType" >getDataByType</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#type" >type</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:102</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="type"></a>
+                        <b>type</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Required : </i>&nbsp;<b>true</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:61</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDataByType"></a>
+                    <span class="name">
+                        <span ><b>getDataByType</b></span>
+                        <a href="#getDataByType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDataByType()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Fetches the data based on the type of chart.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;ChartData&lt;bar&gt;&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>An observable containing the chart data.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:115</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="barChartOptions"></a>
+                    <span class="name">
+                        <span ><b>barChartOptions</b></span>
+                        <a href="#barChartOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: {
+      x: {},
+      y: {
+        min: 10,
+      },
+    },
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="barChartType"></a>
+                    <span class="name">
+                        <span ><b>barChartType</b></span>
+                        <a href="#barChartType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;bar&#x27; as const</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chart"></a>
+                    <span class="name">
+                        <span ><b>chart</b></span>
+                        <a href="#chart"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>viewChild(BaseChartDirective)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dashboard"></a>
+                    <span class="name">
+                        <span ><b>dashboard</b></span>
+                        <a href="#dashboard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(DashboardService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="data"></a>
+                    <span class="name">
+                        <span ><b>data</b></span>
+                        <a href="#data"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;ChartData&lt;&#x27;bar&#x27;&gt;&gt;({ labels: [], datasets: [] })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;string | null&gt;(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="injector"></a>
+                    <span class="name">
+                        <span ><b>injector</b></span>
+                        <a href="#injector"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Injector)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="label"></a>
+                    <span class="name">
+                        <span ><b>label</b></span>
+                        <a href="#label"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input&lt;string&gt;(&#x27;&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="load"></a>
+                    <span class="name">
+                        <span ><b>load</b></span>
+                        <a href="#load"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect&lt;void&gt;(pipe(
+      switchMap(() &#x3D;&gt; {
+          this.loading.set(true);
+          console.log(&#x27;here&#x27;);
+          return this.getDataByType().pipe(
+            tap((data) &#x3D;&gt; {
+              this.loading.set(false);
+              this.error.set(null);
+              this.data.set(data as ChartData&lt;&#x27;bar&#x27;&gt;);
+            }),
+            catchError((error) &#x3D;&gt; {
+              this.loading.set(false);
+              this.error.set(&#x27;Something went wrong. Please try again.&#x27;);
+              return of({});
+            })
+          )
+        }
+      ),
+    ),
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Loads the chart data based on the chart type.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="type"></a>
+                    <span class="name">
+                        <span ><b>type</b></span>
+                        <a href="#type"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/pages/dashboard/components/dashboard-chart.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, effect, inject, Injector, input, OnInit, signal, viewChild } from &#x27;@angular/core&#x27;;
+import { BaseChartDirective } from &#x27;ng2-charts&#x27;;
+import { DashboardService } from &#x27;../../../services/dashboard.service&#x27;;
+import { ChartConfiguration, ChartData } from &#x27;chart.js&#x27;;
+import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from &#x27;@angular/material/card&#x27;;
+import { createEffect } from &#x27;ngxtension/create-effect&#x27;;
+import { catchError, map, Observable, of, pipe, switchMap, tap } from &#x27;rxjs&#x27;;
+import { DashboardChartTypeEnum } from &#x27;../../../enums/dashboard-chart-type.enum&#x27;;
+import { MatButton } from &#x27;@angular/material/button&#x27;;
+import { MatProgressBar } from &#x27;@angular/material/progress-bar&#x27;;
+
+@Component({
+  selector: &#x27;app-dashboard-chart&#x27;,
+  template: &#x60;
+    &lt;mat-card appearance&#x3D;&quot;outlined&quot; class&#x3D;&quot;my-4 mx-2 w-full&quot;&gt;
+      &lt;mat-card-header&gt;
+        &lt;mat-card-title&gt;{{ label() }}&lt;/mat-card-title&gt;
+      &lt;/mat-card-header&gt;
+      &lt;mat-card-content&gt;
+        &lt;div class&#x3D;&quot;h-10&quot;&gt;
+          @if (loading()) {
+            &lt;mat-progress-bar mode&#x3D;&quot;query&quot;&gt;&lt;/mat-progress-bar&gt;
+          }
+        &lt;/div&gt;
+        &lt;canvas
+          [data]&#x3D;&quot;data()&quot;
+          [options]&#x3D;&quot;barChartOptions&quot;
+          [type]&#x3D;&quot;barChartType&quot;
+          baseChart&gt;
+        &lt;/canvas&gt;
+        @if (error()) {
+          &lt;p class&#x3D;&quot;m-4&quot;&gt;{{ error() }}&lt;/p&gt;
+          &lt;button mat-flat-button (click)&#x3D;&quot;this.load()&quot;&gt;Retry&lt;/button&gt;
+        }
+      &lt;/mat-card-content&gt;
+    &lt;/mat-card&gt;
+
+  &#x60;,
+  imports: [
+    BaseChartDirective,
+    MatCard,
+    MatCardContent,
+    MatCardHeader,
+    MatCardTitle,
+    MatButton,
+    MatProgressBar
+  ],
+  standalone: true
+})
+
+export class DashboardChart implements OnInit {
+  chart &#x3D; viewChild(BaseChartDirective);
+  dashboard &#x3D; inject(DashboardService);
+  injector &#x3D; inject(Injector);
+
+  loading &#x3D; signal(false);
+  error &#x3D; signal&lt;string | null&gt;(null);
+  data &#x3D; signal&lt;ChartData&lt;&#x27;bar&#x27;&gt;&gt;({ labels: [], datasets: [] });
+
+  label &#x3D; input&lt;string&gt;(&#x27;&#x27;);
+  type &#x3D; input.required&lt;DashboardChartTypeEnum&gt;();
+
+  barChartOptions: ChartConfiguration&lt;&#x27;bar&#x27;&gt;[&#x27;options&#x27;] &#x3D; {
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: {
+      x: {},
+      y: {
+        min: 10,
+      },
+    },
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
+  };
+
+  barChartType &#x3D; &#x27;bar&#x27; as const;
+
+  /**
+   * Loads the chart data based on the chart type.
+   */
+  load &#x3D; createEffect&lt;void&gt;(pipe(
+      switchMap(() &#x3D;&gt; {
+          this.loading.set(true);
+          console.log(&#x27;here&#x27;);
+          return this.getDataByType().pipe(
+            tap((data) &#x3D;&gt; {
+              this.loading.set(false);
+              this.error.set(null);
+              this.data.set(data as ChartData&lt;&#x27;bar&#x27;&gt;);
+            }),
+            catchError((error) &#x3D;&gt; {
+              this.loading.set(false);
+              this.error.set(&#x27;Something went wrong. Please try again.&#x27;);
+              return of({});
+            })
+          )
+        }
+      ),
+    ),
+  )
+
+  constructor() {
+    effect(() &#x3D;&gt; {
+      const chart &#x3D; this.chart();
+      if (chart &amp;&amp; this.data()) {
+        chart.update();
+      }
+    }, {
+      injector: this.injector
+    });
+  }
+
+  ngOnInit() {
+    this.load();
+  }
+
+  /**
+   * Fetches the data based on the type of chart.
+   * @returns {Observable&lt;ChartData&lt;&#x27;bar&#x27;&gt;&gt;} An observable containing the chart data.
+   */
+  getDataByType(): Observable&lt;ChartData&lt;&#x27;bar&#x27;&gt;&gt; {
+    switch (this.type()) {
+      case DashboardChartTypeEnum.AVERAGE_PRICE:
+        console.log(&#x27;average price&#x27;);
+        return this.dashboard.getAveragePriceByTicketType().pipe(
+          map((data) &#x3D;&gt; ({
+              labels: Object.keys(data),
+              datasets: [
+                { data: Object.keys(data).map((key) &#x3D;&gt; data[key]), label: this.label() },
+              ],
+            }) as ChartData&lt;&#x27;bar&#x27;&gt;,
+          ))
+      case DashboardChartTypeEnum.TICKET_SALES:
+        console.log(&#x27;ticket sales&#x27;);
+        return this.dashboard.getTicketSalesOverTime().pipe(
+          map((data) &#x3D;&gt; ({
+              labels: Object.keys(data),
+              datasets: [
+                { data: Object.keys(data).map((key) &#x3D;&gt; data[key]), label: this.label() },
+              ],
+            }) as ChartData&lt;&#x27;bar&#x27;&gt;,
+          ))
+      default:
+        return of({
+          labels: [],
+          datasets: [],
+        })
+    }
+  }
+
+
+}
+</code></pre>
+    </div>
+
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-card appearance="outlined" class="my-4 mx-2 w-full">  <mat-card-header>    <mat-card-title>{{ label() }}</mat-card-title>  </mat-card-header>  <mat-card-content>    <div class="h-10">      @if (loading()) {        <mat-progress-bar mode="query"></mat-progress-bar>      }    </div>    <canvas      [data]="data()"      [options]="barChartOptions"      [type]="barChartType"      baseChart>    </canvas>    @if (error()) {      <p class="m-4">{{ error() }}</p>      <button mat-flat-button (click)="this.load()">Retry</button>    }  </mat-card-content></mat-card></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateTicketComponent', 'selector': 'app-create-ticket'},{'name': 'DashboardChart', 'selector': 'app-dashboard-chart'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'TicketCardComponent', 'selector': 'app-ticket-card'},{'name': 'TicketDealsComponent', 'selector': 'app-ticket-deals'},{'name': 'TicketFiltersComponent', 'selector': 'app-ticket-filters'},{'name': 'TicketListComponent', 'selector': 'app-ticket-list'},{'name': 'TicketsComponent', 'selector': 'app-tickets'},{'name': 'ToolbarComponent', 'selector': 'app-toolbar'}];
+    var DIRECTIVES = [{'name': 'RoleDirective', 'selector': '[role]'}];
+    var ACTUAL_COMPONENT = {'name': 'DashboardChart'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DashboardChart.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

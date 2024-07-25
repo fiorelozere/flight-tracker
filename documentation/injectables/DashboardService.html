@@ -79,7 +79,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content miscellaneous-variables">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -89,286 +89,256 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Miscellaneous</li>
-  <li class="breadcrumb-item">Variables</li>
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >DashboardService</li>
 </ol>
 
-<section data-compodoc="block-index">
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/services/dashboard.service.ts</code>
+        </p>
+
+
+
+
+
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <ul class="index-list">
-                        <li>
-                            <a href="#appConfig" title="src/app/app.config.ts" ><b>appConfig</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#authInterceptor" title="src/app/auth/auth.interceptor.ts" ><b>authInterceptor</b>&nbsp;&nbsp;&nbsp;(src/.../auth.interceptor.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#environment" title="src/environments/environment.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#initialState" title="src/app/pages/tickets/tickets.store.ts" ><b>initialState</b>&nbsp;&nbsp;&nbsp;(src/.../tickets.store.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#TicketListStore" title="src/app/pages/tickets/tickets.store.ts" ><b>TicketListStore</b>&nbsp;&nbsp;&nbsp;(src/.../tickets.store.ts)</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
-    <h3>src/app/app.config.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="appConfig"></a>
-                    <span class="name">
-                        <span ><b>appConfig</b></span>
-                        <a href="#appConfig"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>ApplicationConfig</code>
-
+                        <h6><b>Properties</b></h6>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>{
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeApp,
-      multi: true,
-      deps: [AuthStore],
-    },
-    provideExperimentalZonelessChangeDetection(),
-    provideRouter(routes),
-    provideAnimationsAsync(),
-    provideHttpClient(withInterceptors([authInterceptor])),
-    provideNativeDateAdapter(),
-    MatSnackBar,
-    provideCharts(withDefaultRegisterables()),
-  ]
-}</code>
+                        <ul class="index-list">
+                            <li>
+                                <a href="#http" >http</a>
+                            </li>
+                        </ul>
                     </td>
                 </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAveragePriceByTicketType" >getAveragePriceByTicketType</a>
+                            </li>
+                            <li>
+                                <a href="#getTicketSalesOverTime" >getTicketSalesOverTime</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
 
 
         </tbody>
     </table>
 </section>
-    <h3>src/app/auth/auth.interceptor.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
+
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="authInterceptor"></a>
+                    <a name="getAveragePriceByTicketType"></a>
                     <span class="name">
-                        <span ><b>authInterceptor</b></span>
-                        <a href="#authInterceptor"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>getAveragePriceByTicketType</b></span>
+                        <a href="#getAveragePriceByTicketType"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>HttpInterceptorFn</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>(
-  request: HttpRequest&lt;unknown&gt;,
-  next: HttpHandlerFn
-): Observable&lt;HttpEvent&lt;unknown&gt;&gt; &#x3D;&gt; {
-  const authStore &#x3D; inject(AuthStore);
-  const token &#x3D; authStore.token();
-
-  const clonedRequest &#x3D; token
-    ? request.clone({
-      setHeaders: {
-        Authorization: &#x60;Bearer ${token}&#x60;,
-      },
-    })
-    : request;
-
-  return next(clonedRequest).pipe(
-    catchError(err &#x3D;&gt; handleRequestError(err, authStore))
-  );
-}</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-</section>
-    <h3>src/environments/environment.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="environment"></a>
-                    <span class="name">
-                        <span ><b>environment</b></span>
-                        <a href="#environment"><span class="icon ion-ios-link"></span></a>
-                    </span>
+<code>getAveragePriceByTicketType()</code>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>{
-  apiUrl: &#x27;http://localhost:3000&#x27;,
-}</code>
-                    </td>
-                </tr>
 
 
-        </tbody>
-    </table>
-</section>
-    <h3>src/app/pages/tickets/tickets.store.ts</h3>
-    <section data-compodoc="block-properties">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="25"
+                                    class="link-to-prism">src/app/services/dashboard.service.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
             <tr>
                 <td class="col-md-4">
-                    <a name="initialState"></a>
-                    <span class="name">
-                        <span ><b>initialState</b></span>
-                        <a href="#initialState"><span class="icon ion-ios-link"></span></a>
-                    </span>
+                        <div class="io-description"><p>Gets average ticket price by ticket type.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;literal type&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>An observable containing average ticket price by type.</p>
+
+                            </div>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/TicketListState.html" target="_self" >TicketListState</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>{
-  data: [],
-  params: {
-    page: 0,
-    pageSize: 10,
-    from_date: null,
-    to_date: null,
-    inbound: null,
-    outbound: null,
-    from_price: null,
-    to_price: null,
-  },
-  total: 0,
-  loaded: false,
-  loading: false,
-  error: null,
-}</code>
-                    </td>
-                </tr>
-
-
         </tbody>
     </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="TicketListStore"></a>
+                    <a name="getTicketSalesOverTime"></a>
                     <span class="name">
-                        <span ><b>TicketListStore</b></span>
-                        <a href="#TicketListStore"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>getTicketSalesOverTime</b></span>
+                        <a href="#getTicketSalesOverTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTicketSalesOverTime()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="16"
+                                    class="link-to-prism">src/app/services/dashboard.service.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Gets ticket sales data over time.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;literal type&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>An observable containing ticket sales data over time.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="http"></a>
+                    <span class="name">
+                        <span ><b>http</b></span>
+                        <a href="#http"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>signalStore(
-  withState(initialState),
-  withMethods((store, ticketsService &#x3D; inject(TicketsService)) &#x3D;&gt; ({
-    /**
-     * Gets the current state of the store.
-     * @returns {TicketListState} The current state.
-     */
-    state: (): TicketListState &#x3D;&gt; {
-      return getState(store);
-    },
-    /**
-     * Loads the tickets based on the provided parameters.
-     * @param {Partial&lt;TicketListParams&gt;} params - The parameters for loading tickets.
-     * @returns {void}
-     */
-    load: rxMethod&lt;Partial&lt;TicketListParams&gt;&gt;(
-      pipe(
-        tap(() &#x3D;&gt; patchState(store, {loading: true})),
-        switchMap((params: Partial&lt;TicketListParams&gt;) &#x3D;&gt; {
-          const newParams &#x3D; {...getState(store).params, ...params};
-          return ticketsService.getTickets(newParams).pipe(
-            tap({
-              next: response &#x3D;&gt; {
-                patchState(store, {
-                  data: response.body ?? [],
-                  total: Number(response.headers.get(&#x27;X-Total-Count&#x27;)),
-                  loaded: true,
-                  loading: false,
-                  error: null,
-                  params: newParams,
-                });
-              },
-            }),
-            catchError((e) &#x3D;&gt; {
-              console.log(e)
-              patchState(store, {
-                error: &#x27;Error loading tickets&#x27;,
-                loaded: false,
-                loading: false,
-              });
-              return EMPTY;
-            })
-          );
-        }),
-
-      )
-    )
-  }))
-)</code>
+                        <i>Default value : </i><code>inject(HttpClient)</code>
                     </td>
                 </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/services/dashboard.service.ts:10</a></div>
+                        </td>
+                    </tr>
 
 
         </tbody>
     </table>
 </section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { inject, Injectable } from &#x27;@angular/core&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { environment } from &#x27;../../environments/environment&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class DashboardService {
+  http &#x3D; inject(HttpClient);
+
+  /**
+   * Gets ticket sales data over time.
+   * @returns {Observable&lt;{[key: string]: string | number}&gt;} An observable containing ticket sales data over time.
+   */
+  getTicketSalesOverTime(): Observable&lt;{ [key: string]: string | number; }&gt; {
+    const path &#x3D; &#x60;${environment.apiUrl}/dashboard/ticket-sales-over-time&#x60;;
+    return this.http.get&lt;{[key: string]: string | number}&gt;(path);
+  }
+
+  /**
+   * Gets average ticket price by ticket type.
+   * @returns {Observable&lt;{[key: string]: string | number}&gt;} An observable containing average ticket price by type.
+   */
+  getAveragePriceByTicketType(): Observable&lt;{ [key: string]: string | number; }&gt; {
+    const path &#x3D; &#x60;${environment.apiUrl}/dashboard/average-price-by-ticket-type&#x60;;
+    return this.http.get&lt;{[key: string]: string | number}&gt;(path);
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -397,8 +367,8 @@
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
-            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'DashboardService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -102,6 +102,10 @@
                 role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
         <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
             <a href="#tree" class="nav-link"
                 role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
@@ -159,12 +163,22 @@
             </tr>
 
 
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+
+  </code></td>
+            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">@for (ticket of data(); track ticket.id) {
-  &lt;app-ticket-card [ticket]&#x3D;&quot;ticket&quot;&gt;&lt;/app-ticket-card&gt;
-}
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;tickets-grid&quot;&gt;
+  @for (ticket of data(); track ticket.id) {
+    &lt;app-ticket-card [ticket]&#x3D;&quot;ticket&quot;&gt;&lt;/app-ticket-card&gt;
+  } @empty {
+    &lt;p class&#x3D;&quot;m-4&quot;&gt;No tickets found&lt;/p&gt;
+  }
+&lt;/div&gt;
 &lt;mat-paginator [length]&#x3D;&quot;total()&quot;
                [pageSize]&#x3D;&quot;pageSize()&quot;
                [pageIndex]&#x3D;&quot;page()&quot;
@@ -279,9 +293,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:50</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The current page index.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -299,9 +319,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:45</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The current page size.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -319,9 +345,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:55</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The total number of tickets.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -337,9 +369,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:60</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The total number of tickets.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -369,10 +407,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:39</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The list of tickets to display.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -389,10 +433,16 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:50</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The current page index.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -409,10 +459,16 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:60</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The total number of tickets.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -429,10 +485,16 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:45</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The current page size.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -449,10 +511,16 @@
             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/pages/tickets/components/ticket-list.component.ts:55</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The total number of tickets.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -470,9 +538,13 @@ import { MatPaginator, PageEvent } from &#x27;@angular/material/paginator&#x27;;
 @Component({
   selector: &#x27;app-ticket-list&#x27;,
   template: &#x60;
-    @for (ticket of data(); track ticket.id) {
-      &lt;app-ticket-card [ticket]&#x3D;&quot;ticket&quot;&gt;&lt;/app-ticket-card&gt;
-    }
+    &lt;div class&#x3D;&quot;tickets-grid&quot;&gt;
+      @for (ticket of data(); track ticket.id) {
+        &lt;app-ticket-card [ticket]&#x3D;&quot;ticket&quot;&gt;&lt;/app-ticket-card&gt;
+      } @empty {
+        &lt;p class&#x3D;&quot;m-4&quot;&gt;No tickets found&lt;/p&gt;
+      }
+    &lt;/div&gt;
     &lt;mat-paginator [length]&#x3D;&quot;total()&quot;
                    [pageSize]&#x3D;&quot;pageSize()&quot;
                    [pageIndex]&#x3D;&quot;page()&quot;
@@ -482,6 +554,9 @@ import { MatPaginator, PageEvent } from &#x27;@angular/material/paginator&#x27;;
     &lt;/mat-paginator&gt;
   &#x60;,
   standalone: true,
+  styles: &#x60;
+
+  &#x60;,
   imports: [
     TicketCardComponent,
     MatPaginator
@@ -490,17 +565,42 @@ import { MatPaginator, PageEvent } from &#x27;@angular/material/paginator&#x27;;
 })
 
 export class TicketListComponent {
+  /**
+   * The list of tickets to display.
+   */
   data &#x3D; input.required&lt;Ticket[]&gt;();
+
+
+  /**
+   * The current page size.
+   */
   pageSize &#x3D; input.required&lt;number&gt;();
+
+  /**
+   * The current page index.
+   */
   page &#x3D; input.required&lt;number&gt;();
+
+  /**
+   * The total number of tickets.
+   */
   total &#x3D; input.required&lt;number&gt;();
 
+  /**
+   * The total number of tickets.
+   */
   pageChange &#x3D; output&lt;PageEvent&gt;()
 }
 </code></pre>
     </div>
 
 
+    <div class="tab-pane fade " id="styleData">
+            <pre class="line-numbers"><code class="language-scss">
+
+  
+</code></pre>
+    </div>
 
     <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
@@ -527,8 +627,8 @@ export class TicketListComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>@for (ticket of data(); track ticket.id) {  <app-ticket-card [ticket]="ticket"></app-ticket-card>}<mat-paginator [length]="total()"               [pageSize]="pageSize()"               [pageIndex]="page()"               [pageSizeOptions]="[5, 10, 25, 100]"               (page)="pageChange.emit($event)"               aria-label="Select page"></mat-paginator></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateTicketComponent', 'selector': 'app-create-ticket'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'TicketCardComponent', 'selector': 'app-ticket-card'},{'name': 'TicketFiltersComponent', 'selector': 'app-ticket-filters'},{'name': 'TicketListComponent', 'selector': 'app-ticket-list'},{'name': 'TicketsComponent', 'selector': 'app-tickets'},{'name': 'ToolbarComponent', 'selector': 'app-toolbar'}];
+        var COMPONENT_TEMPLATE = '<div><div class="tickets-grid">  @for (ticket of data(); track ticket.id) {    <app-ticket-card [ticket]="ticket"></app-ticket-card>  } @empty {    <p class="m-4">No tickets found</p>  }</div><mat-paginator [length]="total()"               [pageSize]="pageSize()"               [pageIndex]="page()"               [pageSizeOptions]="[5, 10, 25, 100]"               (page)="pageChange.emit($event)"               aria-label="Select page"></mat-paginator></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateTicketComponent', 'selector': 'app-create-ticket'},{'name': 'DashboardChart', 'selector': 'app-dashboard-chart'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'TicketCardComponent', 'selector': 'app-ticket-card'},{'name': 'TicketDealsComponent', 'selector': 'app-ticket-deals'},{'name': 'TicketFiltersComponent', 'selector': 'app-ticket-filters'},{'name': 'TicketListComponent', 'selector': 'app-ticket-list'},{'name': 'TicketsComponent', 'selector': 'app-tickets'},{'name': 'ToolbarComponent', 'selector': 'app-toolbar'}];
     var DIRECTIVES = [{'name': 'RoleDirective', 'selector': '[role]'}];
     var ACTUAL_COMPONENT = {'name': 'TicketListComponent'};
 </script>

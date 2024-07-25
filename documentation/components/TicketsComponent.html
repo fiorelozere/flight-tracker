@@ -118,6 +118,12 @@
 
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
 
 
 <section data-compodoc="block-metadata">
@@ -167,6 +173,7 @@
                             <code>MatCardContent</code>
                                 <code><a href="../components/TicketListComponent.html" target="_self" >TicketListComponent</a></code>
                             <code>JsonPipe</code>
+                            <code>MatProgressBar</code>
                 </td>
             </tr>
 
@@ -174,14 +181,22 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;flex items-center space-between&quot;&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;h-10&quot;&gt;
+  @if (store.loading()) {
+    &lt;mat-progress-bar mode&#x3D;&quot;query&quot;&gt;&lt;/mat-progress-bar&gt;
+  }
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;flex items-center space-between&quot;&gt;
   &lt;h3&gt;Tickets&lt;/h3&gt;
   &lt;button mat-flat-button *role&#x3D;&quot;Role.Admin&quot; [routerLink]&#x3D;&quot;[&#x27;create&#x27;]&quot;&gt;Create Ticket&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;mat-card appearance&#x3D;&quot;outlined&quot;&gt;
   &lt;mat-card-content&gt;
-    &lt;app-ticket-filters&gt;&lt;/app-ticket-filters&gt;
+    &lt;app-ticket-filters
+      (search)&#x3D;&quot;onSearch($event)&quot;
+      [params]&#x3D;&quot;store.params()&quot;&gt;&lt;/app-ticket-filters&gt;
   &lt;/mat-card-content&gt;
 &lt;/mat-card&gt;
 
@@ -193,7 +208,6 @@
       [total]&#x3D;&quot;store.total()&quot;
       (pageChange)&#x3D;&quot;onPagination($event)&quot;
       [data]&#x3D;&quot;store.data()&quot;&gt;&lt;/app-ticket-list&gt;
-    &lt;!--        &lt;pre&gt;{{store.state() | json}}&lt;/pre&gt;--&gt;
   &lt;/mat-card-content&gt;
 &lt;/mat-card&gt;
 </code></pre></td>
@@ -233,6 +247,9 @@
                                 <a href="#router" >router</a>
                             </li>
                             <li>
+                                <a href="#snackBar" >snackBar</a>
+                            </li>
+                            <li>
                                 <a href="#store" >store</a>
                             </li>
                         </ul>
@@ -248,7 +265,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
                                 <a href="#onPagination" >onPagination</a>
+                            </li>
+                            <li>
+                                <a href="#onSearch" >onSearch</a>
                             </li>
                         </ul>
                     </td>
@@ -273,7 +296,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/pages/tickets/tickets.component.ts:62</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/pages/tickets/tickets.component.ts:75</a></div>
                             </td>
                         </tr>
 
@@ -294,6 +317,43 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/pages/tickets/tickets.component.ts:87</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="onPagination"></a>
                     <span class="name">
                         <span ><b>onPagination</b></span>
@@ -310,14 +370,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="77"
-                                    class="link-to-prism">src/app/pages/tickets/tickets.component.ts:77</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/app/pages/tickets/tickets.component.ts:104</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Handles pagination events.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -328,6 +390,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -342,6 +405,88 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The pagination event.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSearch"></a>
+                    <span class="name">
+                        <span ><b>onSearch</b></span>
+                        <a href="#onSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSearch(event: Partial<TicketListParams>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/pages/tickets/tickets.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles search events.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Partial&lt;TicketListParams&gt;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The search event parameters.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -381,7 +526,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/pages/tickets/tickets.component.ts:60</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/pages/tickets/tickets.component.ts:72</a></div>
                         </td>
                     </tr>
 
@@ -406,7 +551,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/pages/tickets/tickets.component.ts:58</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/pages/tickets/tickets.component.ts:70</a></div>
                         </td>
                     </tr>
 
@@ -431,7 +576,32 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/pages/tickets/tickets.component.ts:61</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/pages/tickets/tickets.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="snackBar"></a>
+                    <span class="name">
+                        <span ><b>snackBar</b></span>
+                        <a href="#snackBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(MatSnackBar)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/pages/tickets/tickets.component.ts:75</a></div>
                         </td>
                     </tr>
 
@@ -456,7 +626,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/pages/tickets/tickets.component.ts:62</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/pages/tickets/tickets.component.ts:74</a></div>
                         </td>
                     </tr>
 
@@ -469,22 +639,32 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, effect, inject } from &#x27;@angular/core&#x27;;
-import { MatButton } from &#x27;@angular/material/button&#x27;;
-import { Router, RouterLink } from &#x27;@angular/router&#x27;;
-import { RoleDirective } from &#x27;../../auth/role.directive&#x27;;
-import { Role } from &#x27;../../enums/role.enum&#x27;;
-import { MatCard, MatCardContent } from &#x27;@angular/material/card&#x27;;
-import { TicketFiltersComponent } from &#x27;./components/ticket-filters.component&#x27;;
-import { TicketListComponent } from &#x27;./components/ticket-list.component&#x27;;
-import { TicketListStore } from &#x27;./tickets.store&#x27;;
-import { JsonPipe } from &#x27;@angular/common&#x27;;
-import { PageEvent } from &#x27;@angular/material/paginator&#x27;;
-import { injectQueryParams } from &#x27;ngxtension/inject-query-params&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, effect, inject, OnInit } from &#x27;@angular/core&#x27;;
+import {MatButton} from &#x27;@angular/material/button&#x27;;
+import {Router, RouterLink} from &#x27;@angular/router&#x27;;
+import {RoleDirective} from &#x27;../../auth/role.directive&#x27;;
+import {Role} from &#x27;../../enums/role.enum&#x27;;
+import {MatCard, MatCardContent} from &#x27;@angular/material/card&#x27;;
+import {TicketFiltersComponent} from &#x27;./components/ticket-filters.component&#x27;;
+import {TicketListComponent} from &#x27;./components/ticket-list.component&#x27;;
+import {TicketListStore} from &#x27;./tickets.store&#x27;;
+import {JsonPipe} from &#x27;@angular/common&#x27;;
+import {PageEvent} from &#x27;@angular/material/paginator&#x27;;
+import {injectQueryParams} from &#x27;ngxtension/inject-query-params&#x27;;
+import {TicketListParams} from &quot;../../models/ticket-state.interface&quot;;
+import {MatProgressBar} from &quot;@angular/material/progress-bar&quot;;
+import {MatSnackBar} from &quot;@angular/material/snack-bar&quot;;
+import {explicitEffect} from &quot;ngxtension/explicit-effect&quot;;
 
 @Component({
   selector: &#x27;app-tickets&#x27;,
   template: &#x60;
+    &lt;div class&#x3D;&quot;h-10&quot;&gt;
+      @if (store.loading()) {
+        &lt;mat-progress-bar mode&#x3D;&quot;query&quot;&gt;&lt;/mat-progress-bar&gt;
+      }
+    &lt;/div&gt;
+
     &lt;div class&#x3D;&quot;flex items-center space-between&quot;&gt;
       &lt;h3&gt;Tickets&lt;/h3&gt;
       &lt;button mat-flat-button *role&#x3D;&quot;Role.Admin&quot; [routerLink]&#x3D;&quot;[&#x27;create&#x27;]&quot;&gt;Create Ticket&lt;/button&gt;
@@ -492,7 +672,9 @@ import { injectQueryParams } from &#x27;ngxtension/inject-query-params&#x27;;
 
     &lt;mat-card appearance&#x3D;&quot;outlined&quot;&gt;
       &lt;mat-card-content&gt;
-        &lt;app-ticket-filters&gt;&lt;/app-ticket-filters&gt;
+        &lt;app-ticket-filters
+          (search)&#x3D;&quot;onSearch($event)&quot;
+          [params]&#x3D;&quot;store.params()&quot;&gt;&lt;/app-ticket-filters&gt;
       &lt;/mat-card-content&gt;
     &lt;/mat-card&gt;
 
@@ -504,7 +686,6 @@ import { injectQueryParams } from &#x27;ngxtension/inject-query-params&#x27;;
           [total]&#x3D;&quot;store.total()&quot;
           (pageChange)&#x3D;&quot;onPagination($event)&quot;
           [data]&#x3D;&quot;store.data()&quot;&gt;&lt;/app-ticket-list&gt;
-        &lt;!--        &lt;pre&gt;{{store.state() | json}}&lt;/pre&gt;--&gt;
       &lt;/mat-card-content&gt;
     &lt;/mat-card&gt;
   &#x60;,
@@ -517,7 +698,8 @@ import { injectQueryParams } from &#x27;ngxtension/inject-query-params&#x27;;
     TicketFiltersComponent,
     MatCardContent,
     TicketListComponent,
-    JsonPipe
+    JsonPipe,
+    MatProgressBar
   ],
   providers: [
     TicketListStore
@@ -525,17 +707,28 @@ import { injectQueryParams } from &#x27;ngxtension/inject-query-params&#x27;;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class TicketsComponent {
+export class TicketsComponent implements OnInit {
   Role &#x3D; Role;
 
   queryParams &#x3D; injectQueryParams();
   router &#x3D; inject(Router);
   store &#x3D; inject(TicketListStore);
+  snackBar &#x3D; inject(MatSnackBar);
 
   constructor() {
-    this.store.load( {
-      page: Number(this.queryParams()[&#x27;_page&#x27;]) ?? 0,
-      pageSize: Number(this.queryParams()[&#x27;_limit&#x27;]) ?? 10,
+    explicitEffect([this.store.state], ([state]) &#x3D;&gt; {
+      if (state.error) {
+        this.snackBar.open(state.error, &#x27;Close&#x27;, {
+          duration: 5000
+        });
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.store.load({
+      page: this.queryParams()[&#x27;_page&#x27;] ? Number(this.queryParams()[&#x27;_page&#x27;]) : 0,
+      pageSize: this.queryParams()[&#x27;_limit&#x27;] ? Number(this.queryParams()[&#x27;_limit&#x27;]) : 10,
       from_date: this.queryParams()[&#x27;from_date&#x27;],
       to_date: this.queryParams()[&#x27;to_date&#x27;],
       inbound: this.queryParams()[&#x27;inbound&#x27;],
@@ -545,6 +738,10 @@ export class TicketsComponent {
     })
   }
 
+  /**
+   * Handles pagination events.
+   * @param {PageEvent} event - The pagination event.
+   */
   onPagination(event: PageEvent) {
     this.router.navigate([], {
       queryParams: {
@@ -554,6 +751,25 @@ export class TicketsComponent {
       queryParamsHandling: &#x27;merge&#x27;
     });
     this.store.load({page: event.pageIndex, pageSize: event.pageSize});
+  }
+
+  /**
+   * Handles search events.
+   * @param {Partial&lt;TicketListParams&gt;} event - The search event parameters.
+   */
+  onSearch(event: Partial&lt;TicketListParams&gt;) {
+    this.router.navigate([], {
+      queryParams: {
+        from_date: event.from_date,
+        to_date: event.to_date,
+        inbound: event.inbound,
+        outbound: event.outbound,
+        from_price: event.from_price,
+        to_price: event.to_price,
+      },
+      queryParamsHandling: &#x27;merge&#x27;
+    });
+    this.store.load(event);
   }
 }
 </code></pre>
@@ -586,8 +802,8 @@ export class TicketsComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="flex items-center space-between">  <h3>Tickets</h3>  <button mat-flat-button *role="Role.Admin" [routerLink]="[\'create\']">Create Ticket</button></div><mat-card appearance="outlined">  <mat-card-content>    <app-ticket-filters></app-ticket-filters>  </mat-card-content></mat-card><mat-card class="my-4" appearance="outlined">  <mat-card-content>    <app-ticket-list      [page]="store.params().page"      [pageSize]="store.params().pageSize"      [total]="store.total()"      (pageChange)="onPagination($event)"      [data]="store.data()"></app-ticket-list>    <!--        <pre>{{store.state() | json}}</pre>-->  </mat-card-content></mat-card></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateTicketComponent', 'selector': 'app-create-ticket'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'TicketCardComponent', 'selector': 'app-ticket-card'},{'name': 'TicketFiltersComponent', 'selector': 'app-ticket-filters'},{'name': 'TicketListComponent', 'selector': 'app-ticket-list'},{'name': 'TicketsComponent', 'selector': 'app-tickets'},{'name': 'ToolbarComponent', 'selector': 'app-toolbar'}];
+        var COMPONENT_TEMPLATE = '<div><div class="h-10">  @if (store.loading()) {    <mat-progress-bar mode="query"></mat-progress-bar>  }</div><div class="flex items-center space-between">  <h3>Tickets</h3>  <button mat-flat-button *role="Role.Admin" [routerLink]="[\'create\']">Create Ticket</button></div><mat-card appearance="outlined">  <mat-card-content>    <app-ticket-filters      (search)="onSearch($event)"      [params]="store.params()"></app-ticket-filters>  </mat-card-content></mat-card><mat-card class="my-4" appearance="outlined">  <mat-card-content>    <app-ticket-list      [page]="store.params().page"      [pageSize]="store.params().pageSize"      [total]="store.total()"      (pageChange)="onPagination($event)"      [data]="store.data()"></app-ticket-list>  </mat-card-content></mat-card></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateTicketComponent', 'selector': 'app-create-ticket'},{'name': 'DashboardChart', 'selector': 'app-dashboard-chart'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'TicketCardComponent', 'selector': 'app-ticket-card'},{'name': 'TicketDealsComponent', 'selector': 'app-ticket-deals'},{'name': 'TicketFiltersComponent', 'selector': 'app-ticket-filters'},{'name': 'TicketListComponent', 'selector': 'app-ticket-list'},{'name': 'TicketsComponent', 'selector': 'app-tickets'},{'name': 'ToolbarComponent', 'selector': 'app-toolbar'}];
     var DIRECTIVES = [{'name': 'RoleDirective', 'selector': '[role]'}];
     var ACTUAL_COMPONENT = {'name': 'TicketsComponent'};
 </script>

@@ -150,12 +150,133 @@
                 <td class="col-md-9"><code>true</code></td>
             </tr>
 
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>MatButton</code>
+                                <code><a href="../directives/RoleDirective.html" target="_self" >RoleDirective</a></code>
+                            <code>RouterLink</code>
+                            <code>MatCard</code>
+                            <code>MatCardContent</code>
+                            <code>MatFormField</code>
+                            <code>ReactiveFormsModule</code>
+                            <code>MatInput</code>
+                            <code>MatSelect</code>
+                            <code>MatOption</code>
+                            <code>MatDatepickerInput</code>
+                            <code>MatDatepickerToggle</code>
+                            <code>MatDatepicker</code>
+                            <code>MatError</code>
+                            <code>MatLabel</code>
+                            <code>MatSuffix</code>
+                            <code>JsonPipe</code>
+                </td>
+            </tr>
 
 
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">create ticket</code></pre></td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;flex items-center space-between&quot;&gt;
+  &lt;h3&gt;Create Ticket&lt;/h3&gt;
+  &lt;div&gt;
+    &lt;button mat-stroked-button [routerLink]&#x3D;&quot;[&#x27;/dashboard/tickets&#x27;]&quot; class&#x3D;&quot;mx-2&quot;&gt;Cancel&lt;/button&gt;
+    &lt;button mat-flat-button class&#x3D;&quot;mx-2&quot; [disabled]&#x3D;&quot;form.invalid&quot; (click)&#x3D;&quot;onSave()&quot;&gt;Save&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;mat-card appearance&#x3D;&quot;outlined&quot;&gt;
+  &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
+    &lt;mat-card-content&gt;
+      &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+        &lt;mat-label&gt;Inbound&lt;/mat-label&gt;
+        &lt;input matInput formControlName&#x3D;&quot;inbound&quot;&gt;
+        @if (form.get(&#x27;inbound&#x27;)?.hasError(&#x27;required&#x27;)) {
+          &lt;mat-error&gt;
+            Inbound city is required
+          &lt;/mat-error&gt;
+        }
+      &lt;/mat-form-field&gt;
+
+      &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+        &lt;mat-label&gt;Outbound&lt;/mat-label&gt;
+        &lt;input matInput formControlName&#x3D;&quot;outbound&quot;&gt;
+        @if (form.get(&#x27;outbound&#x27;)?.hasError(&#x27;required&#x27;)) {
+          &lt;mat-error&gt;
+            Outbound city is required
+          &lt;/mat-error&gt;
+        }
+      &lt;/mat-form-field&gt;
+
+      &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+        &lt;mat-label&gt;Ticket Type&lt;/mat-label&gt;
+        &lt;mat-select formControlName&#x3D;&quot;ticket_type&quot;&gt;
+          @for (type of ticketTypes(); track $index) {
+            &lt;mat-option [value]&#x3D;&quot;type&quot;&gt;{{ type }}&lt;/mat-option&gt;
+          }
+        &lt;/mat-select&gt;
+        @if (form.get(&#x27;ticket_type&#x27;)?.hasError(&#x27;required&#x27;)) {
+          &lt;mat-error&gt;
+            Ticket type is required
+          &lt;/mat-error&gt;
+        }
+      &lt;/mat-form-field&gt;
+
+      &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+        &lt;mat-label&gt;Price&lt;/mat-label&gt;
+        &lt;input matInput type&#x3D;&quot;number&quot; formControlName&#x3D;&quot;price&quot;&gt;
+        @if (form.get(&#x27;price&#x27;)?.hasError(&#x27;required&#x27;)) {
+          &lt;mat-error&gt;
+            Price is required
+          &lt;/mat-error&gt;
+        }
+        @if (form.get(&#x27;price&#x27;)?.hasError(&#x27;min&#x27;)) {
+          &lt;mat-error&gt;
+            Price must be greater than 0
+          &lt;/mat-error&gt;
+        }
+      &lt;/mat-form-field&gt;
+
+      &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+        &lt;mat-label&gt;From Date&lt;/mat-label&gt;
+        &lt;input matInput [matDatepicker]&#x3D;&quot;fromDatePicker&quot; formControlName&#x3D;&quot;from_date&quot;&gt;
+        &lt;mat-datepicker-toggle matSuffix [for]&#x3D;&quot;fromDatePicker&quot;&gt;&lt;/mat-datepicker-toggle&gt;
+        &lt;mat-datepicker #fromDatePicker&gt;&lt;/mat-datepicker&gt;
+        @if (form.get(&#x27;from_date&#x27;)?.hasError(&#x27;required&#x27;)) {
+          &lt;mat-error&gt;
+            From date is required
+          &lt;/mat-error&gt;
+        }
+      &lt;/mat-form-field&gt;
+
+      &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+        &lt;mat-label&gt;To Date&lt;/mat-label&gt;
+        &lt;input matInput [matDatepicker]&#x3D;&quot;toDatePicker&quot; formControlName&#x3D;&quot;to_date&quot;&gt;
+        &lt;mat-datepicker-toggle matSuffix [for]&#x3D;&quot;toDatePicker&quot;&gt;&lt;/mat-datepicker-toggle&gt;
+        &lt;mat-datepicker #toDatePicker&gt;&lt;/mat-datepicker&gt;
+        @if (form.get(&#x27;to_date&#x27;)?.hasError(&#x27;required&#x27;)) {
+          &lt;mat-error&gt;
+            To date is required
+          &lt;/mat-error&gt;
+        }
+      &lt;/mat-form-field&gt;
+      @if (form.hasError(&#x27;dateRangeInvalid&#x27;)) {
+        &lt;mat-error&gt;
+          From date must be earlier than to date.
+        &lt;/mat-error&gt;
+      }
+      &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+        &lt;mat-label&gt;Seat Number&lt;/mat-label&gt;
+        &lt;input matInput formControlName&#x3D;&quot;seat_number&quot;&gt;
+        @if (form.get(&#x27;seat_number&#x27;)?.hasError(&#x27;required&#x27;)) {
+          &lt;mat-error&gt;
+            Seat number is required
+          &lt;/mat-error&gt;
+        }
+      &lt;/mat-form-field&gt;
+    &lt;/mat-card-content&gt;
+  &lt;/form&gt;
+&lt;/mat-card&gt;
+</code></pre></td>
             </tr>
 
 
@@ -170,29 +291,536 @@
     </table>
 </section>
 
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createTicket" >createTicket</a>
+                            </li>
+                            <li>
+                                <a href="#fb" >fb</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#snackBar" >snackBar</a>
+                            </li>
+                            <li>
+                                <a href="#tickets" >tickets</a>
+                            </li>
+                            <li>
+                                <a href="#ticketTypes" >ticketTypes</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onSave" >onSave</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
 
 
 
 
 
 
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSave"></a>
+                    <span class="name">
+                        <span ><b>onSave</b></span>
+                        <a href="#onSave"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSave()</code>
+                </td>
+            </tr>
 
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">src/app/pages/tickets/create-ticket.component.ts:166</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Saves the new ticket if the form is valid.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createTicket"></a>
+                    <span class="name">
+                        <span ><b>createTicket</b></span>
+                        <a href="#createTicket"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect&lt;Ticket&gt;(pipe(
+      tap(() &#x3D;&gt; this.loading.set(true)),
+      switchMap((ticket: Ticket) &#x3D;&gt;
+        this.tickets.createTicket(ticket).pipe(
+          tap((response) &#x3D;&gt; {
+            this.form.reset();
+            this.loading.set(false);
+            this.snackBar.open(&#x27;Ticket created successfully&#x27;, &#x27;Close&#x27;);
+          }),
+          catchError((e) &#x3D;&gt; {
+              console.log(e);
+              this.loading.set(false);
+              this.snackBar.open(e.error.error ?? &#x27;Something went wrong&#x27;, &#x27;Close&#x27;);
+              return throwError(() &#x3D;&gt; e);
+            }
+          )
+        ),
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">src/app/pages/tickets/create-ticket.component.ts:182</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a new ticket using the TicketsService.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fb"></a>
+                    <span class="name">
+                        <span ><b>fb</b></span>
+                        <a href="#fb"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(FormBuilder)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/app/pages/tickets/create-ticket.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.fb.group({
+    inbound: [ &#x27;&#x27;, Validators.required ],
+    outbound: [ &#x27;&#x27;, Validators.required ],
+    ticket_type: [ &#x27;&#x27;, Validators.required ],
+    price: [ 0, [ Validators.required, Validators.min(1) ] ],
+    from_date: [ &#x27;&#x27;, Validators.required ],
+    to_date: [ &#x27;&#x27;, Validators.required ],
+    seat_number: [ &#x27;&#x27;, Validators.required ]
+  }, { validators: dateRangeValidator() })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/app/pages/tickets/create-ticket.component.ts:153</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">src/app/pages/tickets/create-ticket.component.ts:150</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="snackBar"></a>
+                    <span class="name">
+                        <span ><b>snackBar</b></span>
+                        <a href="#snackBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(MatSnackBar)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">src/app/pages/tickets/create-ticket.component.ts:148</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tickets"></a>
+                    <span class="name">
+                        <span ><b>tickets</b></span>
+                        <a href="#tickets"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(TicketsService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/app/pages/tickets/create-ticket.component.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ticketTypes"></a>
+                    <span class="name">
+                        <span ><b>ticketTypes</b></span>
+                        <a href="#ticketTypes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal([ &#x27;Economy&#x27;, &#x27;Business&#x27;, &#x27;First Class&#x27; ])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">src/app/pages/tickets/create-ticket.component.ts:151</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, inject, signal } from &#x27;@angular/core&#x27;;
+import { MatButton } from &#x27;@angular/material/button&#x27;;
+import { RoleDirective } from &#x27;../../auth/role.directive&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { MatCard, MatCardContent } from &#x27;@angular/material/card&#x27;;
+import { FormBuilder, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
+import { MatError, MatFormField, MatLabel, MatSuffix } from &#x27;@angular/material/form-field&#x27;;
+import { MatInput } from &#x27;@angular/material/input&#x27;;
+import { MatOption, MatSelect } from &#x27;@angular/material/select&#x27;;
+import { MatDatepicker, MatDatepickerInput, MatDatepickerToggle } from &#x27;@angular/material/datepicker&#x27;;
+import { TicketsService } from &#x27;../../services/tickets.service&#x27;;
+import { createEffect } from &#x27;ngxtension/create-effect&#x27;;
+import { catchError, pipe, switchMap, tap, throwError } from &#x27;rxjs&#x27;;
+import { Ticket } from &#x27;../../models/ticket.interface&#x27;;
+import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+import { dateRangeValidator } from &#x27;../../utils/validators/date-range-validator&#x27;;
+import { JsonPipe } from &#x27;@angular/common&#x27;;
 
 @Component({
   selector: &#x27;app-create-ticket&#x27;,
-  template: &#x60;create ticket&#x60;,
+  template: &#x60;
+    &lt;div class&#x3D;&quot;flex items-center space-between&quot;&gt;
+      &lt;h3&gt;Create Ticket&lt;/h3&gt;
+      &lt;div&gt;
+        &lt;button mat-stroked-button [routerLink]&#x3D;&quot;[&#x27;/dashboard/tickets&#x27;]&quot; class&#x3D;&quot;mx-2&quot;&gt;Cancel&lt;/button&gt;
+        &lt;button mat-flat-button class&#x3D;&quot;mx-2&quot; [disabled]&#x3D;&quot;form.invalid&quot; (click)&#x3D;&quot;onSave()&quot;&gt;Save&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;mat-card appearance&#x3D;&quot;outlined&quot;&gt;
+      &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
+        &lt;mat-card-content&gt;
+          &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+            &lt;mat-label&gt;Inbound&lt;/mat-label&gt;
+            &lt;input matInput formControlName&#x3D;&quot;inbound&quot;&gt;
+            @if (form.get(&#x27;inbound&#x27;)?.hasError(&#x27;required&#x27;)) {
+              &lt;mat-error&gt;
+                Inbound city is required
+              &lt;/mat-error&gt;
+            }
+          &lt;/mat-form-field&gt;
+
+          &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+            &lt;mat-label&gt;Outbound&lt;/mat-label&gt;
+            &lt;input matInput formControlName&#x3D;&quot;outbound&quot;&gt;
+            @if (form.get(&#x27;outbound&#x27;)?.hasError(&#x27;required&#x27;)) {
+              &lt;mat-error&gt;
+                Outbound city is required
+              &lt;/mat-error&gt;
+            }
+          &lt;/mat-form-field&gt;
+
+          &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+            &lt;mat-label&gt;Ticket Type&lt;/mat-label&gt;
+            &lt;mat-select formControlName&#x3D;&quot;ticket_type&quot;&gt;
+              @for (type of ticketTypes(); track $index) {
+                &lt;mat-option [value]&#x3D;&quot;type&quot;&gt;{{ type }}&lt;/mat-option&gt;
+              }
+            &lt;/mat-select&gt;
+            @if (form.get(&#x27;ticket_type&#x27;)?.hasError(&#x27;required&#x27;)) {
+              &lt;mat-error&gt;
+                Ticket type is required
+              &lt;/mat-error&gt;
+            }
+          &lt;/mat-form-field&gt;
+
+          &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+            &lt;mat-label&gt;Price&lt;/mat-label&gt;
+            &lt;input matInput type&#x3D;&quot;number&quot; formControlName&#x3D;&quot;price&quot;&gt;
+            @if (form.get(&#x27;price&#x27;)?.hasError(&#x27;required&#x27;)) {
+              &lt;mat-error&gt;
+                Price is required
+              &lt;/mat-error&gt;
+            }
+            @if (form.get(&#x27;price&#x27;)?.hasError(&#x27;min&#x27;)) {
+              &lt;mat-error&gt;
+                Price must be greater than 0
+              &lt;/mat-error&gt;
+            }
+          &lt;/mat-form-field&gt;
+
+          &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+            &lt;mat-label&gt;From Date&lt;/mat-label&gt;
+            &lt;input matInput [matDatepicker]&#x3D;&quot;fromDatePicker&quot; formControlName&#x3D;&quot;from_date&quot;&gt;
+            &lt;mat-datepicker-toggle matSuffix [for]&#x3D;&quot;fromDatePicker&quot;&gt;&lt;/mat-datepicker-toggle&gt;
+            &lt;mat-datepicker #fromDatePicker&gt;&lt;/mat-datepicker&gt;
+            @if (form.get(&#x27;from_date&#x27;)?.hasError(&#x27;required&#x27;)) {
+              &lt;mat-error&gt;
+                From date is required
+              &lt;/mat-error&gt;
+            }
+          &lt;/mat-form-field&gt;
+
+          &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+            &lt;mat-label&gt;To Date&lt;/mat-label&gt;
+            &lt;input matInput [matDatepicker]&#x3D;&quot;toDatePicker&quot; formControlName&#x3D;&quot;to_date&quot;&gt;
+            &lt;mat-datepicker-toggle matSuffix [for]&#x3D;&quot;toDatePicker&quot;&gt;&lt;/mat-datepicker-toggle&gt;
+            &lt;mat-datepicker #toDatePicker&gt;&lt;/mat-datepicker&gt;
+            @if (form.get(&#x27;to_date&#x27;)?.hasError(&#x27;required&#x27;)) {
+              &lt;mat-error&gt;
+                To date is required
+              &lt;/mat-error&gt;
+            }
+          &lt;/mat-form-field&gt;
+          @if (form.hasError(&#x27;dateRangeInvalid&#x27;)) {
+            &lt;mat-error&gt;
+              From date must be earlier than to date.
+            &lt;/mat-error&gt;
+          }
+          &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;mx-2 my-4 w-full max-w-sm&quot;&gt;
+            &lt;mat-label&gt;Seat Number&lt;/mat-label&gt;
+            &lt;input matInput formControlName&#x3D;&quot;seat_number&quot;&gt;
+            @if (form.get(&#x27;seat_number&#x27;)?.hasError(&#x27;required&#x27;)) {
+              &lt;mat-error&gt;
+                Seat number is required
+              &lt;/mat-error&gt;
+            }
+          &lt;/mat-form-field&gt;
+        &lt;/mat-card-content&gt;
+      &lt;/form&gt;
+    &lt;/mat-card&gt;
+  &#x60;,
   standalone: true,
+  imports: [
+    MatButton,
+    RoleDirective,
+    RouterLink,
+    MatCard,
+    MatCardContent,
+    MatFormField,
+    ReactiveFormsModule,
+    MatInput,
+    MatSelect,
+    MatOption,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepicker,
+    MatError,
+    MatLabel,
+    MatSuffix,
+    JsonPipe
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class CreateTicketComponent {
+  fb &#x3D; inject(FormBuilder);
+  tickets &#x3D; inject(TicketsService);
+  snackBar &#x3D; inject(MatSnackBar);
 
+  loading &#x3D; signal(false);
+  ticketTypes &#x3D; signal([ &#x27;Economy&#x27;, &#x27;Business&#x27;, &#x27;First Class&#x27; ]);
+
+  form &#x3D; this.fb.group({
+    inbound: [ &#x27;&#x27;, Validators.required ],
+    outbound: [ &#x27;&#x27;, Validators.required ],
+    ticket_type: [ &#x27;&#x27;, Validators.required ],
+    price: [ 0, [ Validators.required, Validators.min(1) ] ],
+    from_date: [ &#x27;&#x27;, Validators.required ],
+    to_date: [ &#x27;&#x27;, Validators.required ],
+    seat_number: [ &#x27;&#x27;, Validators.required ]
+  }, { validators: dateRangeValidator() });
+
+  /**
+   * Saves the new ticket if the form is valid.
+   */
+  onSave() {
+    console.log(this.form.value);
+    if (this.form.invalid) {
+      this.form.markAllAsTouched()
+      return;
+    }
+    this.createTicket({
+      ...this.form.value,
+      from_date: this.form.value.from_date ? new Date(this.form.value.from_date).toLocaleDateString() : null,
+      to_date: this.form.value.to_date ? new Date(this.form.value.to_date).toLocaleDateString() : null,
+    } as Ticket);
+  }
+
+  /**
+   * Creates a new ticket using the TicketsService.
+   */
+  createTicket &#x3D; createEffect&lt;Ticket&gt;(pipe(
+      tap(() &#x3D;&gt; this.loading.set(true)),
+      switchMap((ticket: Ticket) &#x3D;&gt;
+        this.tickets.createTicket(ticket).pipe(
+          tap((response) &#x3D;&gt; {
+            this.form.reset();
+            this.loading.set(false);
+            this.snackBar.open(&#x27;Ticket created successfully&#x27;, &#x27;Close&#x27;);
+          }),
+          catchError((e) &#x3D;&gt; {
+              console.log(e);
+              this.loading.set(false);
+              this.snackBar.open(e.error.error ?? &#x27;Something went wrong&#x27;, &#x27;Close&#x27;);
+              return throwError(() &#x3D;&gt; e);
+            }
+          )
+        ),
+      )
+    )
+  )
 }
 </code></pre>
     </div>
@@ -224,8 +852,8 @@ export class CreateTicketComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>create ticket</div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateTicketComponent', 'selector': 'app-create-ticket'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'TicketCardComponent', 'selector': 'app-ticket-card'},{'name': 'TicketFiltersComponent', 'selector': 'app-ticket-filters'},{'name': 'TicketListComponent', 'selector': 'app-ticket-list'},{'name': 'TicketsComponent', 'selector': 'app-tickets'},{'name': 'ToolbarComponent', 'selector': 'app-toolbar'}];
+        var COMPONENT_TEMPLATE = '<div><div class="flex items-center space-between">  <h3>Create Ticket</h3>  <div>    <button mat-stroked-button [routerLink]="[\'/dashboard/tickets\']" class="mx-2">Cancel</button>    <button mat-flat-button class="mx-2" [disabled]="form.invalid" (click)="onSave()">Save</button>  </div></div><mat-card appearance="outlined">  <form [formGroup]="form">    <mat-card-content>      <mat-form-field appearance="outline" class="mx-2 my-4 w-full max-w-sm">        <mat-label>Inbound</mat-label>        <input matInput formControlName="inbound">        @if (form.get(\'inbound\')?.hasError(\'required\')) {          <mat-error>            Inbound city is required          </mat-error>        }      </mat-form-field>      <mat-form-field appearance="outline" class="mx-2 my-4 w-full max-w-sm">        <mat-label>Outbound</mat-label>        <input matInput formControlName="outbound">        @if (form.get(\'outbound\')?.hasError(\'required\')) {          <mat-error>            Outbound city is required          </mat-error>        }      </mat-form-field>      <mat-form-field appearance="outline" class="mx-2 my-4 w-full max-w-sm">        <mat-label>Ticket Type</mat-label>        <mat-select formControlName="ticket_type">          @for (type of ticketTypes(); track $index) {            <mat-option [value]="type">{{ type }}</mat-option>          }        </mat-select>        @if (form.get(\'ticket_type\')?.hasError(\'required\')) {          <mat-error>            Ticket type is required          </mat-error>        }      </mat-form-field>      <mat-form-field appearance="outline" class="mx-2 my-4 w-full max-w-sm">        <mat-label>Price</mat-label>        <input matInput type="number" formControlName="price">        @if (form.get(\'price\')?.hasError(\'required\')) {          <mat-error>            Price is required          </mat-error>        }        @if (form.get(\'price\')?.hasError(\'min\')) {          <mat-error>            Price must be greater than 0          </mat-error>        }      </mat-form-field>      <mat-form-field appearance="outline" class="mx-2 my-4 w-full max-w-sm">        <mat-label>From Date</mat-label>        <input matInput [matDatepicker]="fromDatePicker" formControlName="from_date">        <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>        <mat-datepicker #fromDatePicker></mat-datepicker>        @if (form.get(\'from_date\')?.hasError(\'required\')) {          <mat-error>            From date is required          </mat-error>        }      </mat-form-field>      <mat-form-field appearance="outline" class="mx-2 my-4 w-full max-w-sm">        <mat-label>To Date</mat-label>        <input matInput [matDatepicker]="toDatePicker" formControlName="to_date">        <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>        <mat-datepicker #toDatePicker></mat-datepicker>        @if (form.get(\'to_date\')?.hasError(\'required\')) {          <mat-error>            To date is required          </mat-error>        }      </mat-form-field>      @if (form.hasError(\'dateRangeInvalid\')) {        <mat-error>          From date must be earlier than to date.        </mat-error>      }      <mat-form-field appearance="outline" class="mx-2 my-4 w-full max-w-sm">        <mat-label>Seat Number</mat-label>        <input matInput formControlName="seat_number">        @if (form.get(\'seat_number\')?.hasError(\'required\')) {          <mat-error>            Seat number is required          </mat-error>        }      </mat-form-field>    </mat-card-content>  </form></mat-card></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateTicketComponent', 'selector': 'app-create-ticket'},{'name': 'DashboardChart', 'selector': 'app-dashboard-chart'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardLayoutComponent', 'selector': 'app-dashboard-layout'},{'name': 'SignInComponent', 'selector': 'app-sign-in'},{'name': 'TicketCardComponent', 'selector': 'app-ticket-card'},{'name': 'TicketDealsComponent', 'selector': 'app-ticket-deals'},{'name': 'TicketFiltersComponent', 'selector': 'app-ticket-filters'},{'name': 'TicketListComponent', 'selector': 'app-ticket-list'},{'name': 'TicketsComponent', 'selector': 'app-tickets'},{'name': 'ToolbarComponent', 'selector': 'app-toolbar'}];
     var DIRECTIVES = [{'name': 'RoleDirective', 'selector': '[role]'}];
     var ACTUAL_COMPONENT = {'name': 'CreateTicketComponent'};
 </script>
