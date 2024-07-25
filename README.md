@@ -40,7 +40,7 @@ Flight Tracker is an Angular application for managing and tracking flight ticket
 
 ## Prerequisites
 
-- Node.js (v18 or above)
+- Node.js (v20 or above)
 - npm (v10 or above)
 - Angular CLI (v18.1.1)
 - json-server (v0.17.0)
