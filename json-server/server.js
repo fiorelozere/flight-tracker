@@ -44,11 +44,16 @@ server.use((req, res, next) => {
 server.post('/tickets', (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
     // inbound, outbound, from_date, to_date, and seat_number
-    const { inbound, outbound, from_date, to_date, seat_number } = req.body;
-    if (inbound && outbound && from_date && to_date && seat_number) {
-      const ticket = router.db.get('tickets').find({ inbound, outbound, from_date, to_date, seat_number }).value();
-      if (!ticket) {
-        router.db.get('tickets').push(req.body).write();
+    const { inbound, outbound, from_date, to_date, seat_number, ticket_type } = req.body;
+    if (inbound && outbound && from_date && to_date && seat_number && ticket_type) {
+      const existingTicket = router.db.get('tickets').find({ inbound, outbound, from_date, to_date, seat_number }).value();
+      if (!existingTicket) {
+        // Create the new ticket
+        const newTicket = router.db.get('tickets').insert(req.body).write();
+
+        // Update the ticket with ticket_type_id
+        router.db.get('tickets').find({ id: newTicket.id }).assign({ ticket_type_id: `${newTicket.id}-${ticket_type}` }).write();
+
         return res.status(200).jsonp({ message: "Ticket created successfully" });
       } else {
         return res.status(400).jsonp({ error: "Ticket already exists" });
@@ -60,6 +65,7 @@ server.post('/tickets', (req, res, next) => {
     return res.status(403).jsonp({ error: "Access denied. Admins only." });
   }
 });
+
 
 
 // Use default router

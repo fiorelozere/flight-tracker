@@ -1,13 +1,13 @@
 const { faker } = require('@faker-js/faker');
 const fs = require('fs');
 
-function createRandomTicket(id) {
+function createRandomTicket() {
   const ticketType = faker.helpers.arrayElement(['Economy', 'Business', 'First Class']);
   const fromDate = faker.date.future();
   // Ensure to_date is after from_date by adding a random duration (e.g., 1 to 30 days)
   const toDate = new Date(fromDate);
   toDate.setDate(fromDate.getDate() + faker.number.int({ min: 1, max: 30 }));
-
+  const id = faker.string.uuid();
   return {
     id: id,
     inbound: faker.location.city(),

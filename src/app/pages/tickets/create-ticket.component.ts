@@ -13,6 +13,8 @@ import { createEffect } from 'ngxtension/create-effect';
 import { catchError, pipe, switchMap, tap, throwError } from 'rxjs';
 import { Ticket } from '../../models/ticket.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { dateRangeValidator } from '../../utils/validators/date-range-validator';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-create-ticket',
@@ -92,14 +94,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
             <mat-label>To Date</mat-label>
             <input matInput [matDatepicker]="toDatePicker" formControlName="to_date">
             <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #toDatePicker></mat-datepicker>
+            <mat-datepicker #toDatePicker></mat-datepicker>
             @if (form.get('to_date')?.hasError('required')) {
               <mat-error>
                 To date is required
               </mat-error>
             }
           </mat-form-field>
-
+          @if (form.hasError('dateRangeInvalid')) {
+            <mat-error>
+              From date must be earlier than to date.
+            </mat-error>
+          }
           <mat-form-field appearance="outline" class="mx-2 my-4 w-full max-w-sm">
             <mat-label>Seat Number</mat-label>
             <input matInput formControlName="seat_number">
@@ -130,7 +136,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatDatepicker,
     MatError,
     MatLabel,
-    MatSuffix
+    MatSuffix,
+    JsonPipe
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -151,7 +158,7 @@ export class CreateTicketComponent {
     from_date: [ '', Validators.required ],
     to_date: [ '', Validators.required ],
     seat_number: [ '', Validators.required ]
-  });
+  }, { validators: dateRangeValidator() });
 
   onSave() {
     console.log(this.form.value);

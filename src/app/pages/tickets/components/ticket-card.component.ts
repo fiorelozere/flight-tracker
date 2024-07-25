@@ -19,8 +19,8 @@ import { Ticket } from '../../../models/ticket.interface';
         <mat-card-subtitle>{{ ticket().ticket_type }} - Seat: {{ ticket().seat_number }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p><strong>Departure:</strong> {{ ticket().from_date | date }}</p>
-        <p><strong>Return:</strong> {{ ticket().to_date | date }}</p>
+        <p><strong>Departure:</strong> {{ ticket().from_date }}</p>
+        <p><strong>Return:</strong> {{ ticket().to_date }}</p>
         <p><strong>Price:</strong> $ {{ ticket().price }}</p>
       </mat-card-content>
       <mat-card-footer>
