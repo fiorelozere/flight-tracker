@@ -1,10 +1,9 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { TicketCardComponent } from '../../tickets/components/ticket-card.component';
 import { Ticket } from '../../../models/ticket.interface';
 import { createEffect } from 'ngxtension/create-effect';
 import { catchError, of, pipe, switchMap, tap } from 'rxjs';
-import { ChartData } from 'chart.js';
 import { TicketsService } from '../../../services/tickets.service';
 
 @Component({
@@ -32,7 +31,8 @@ import { TicketsService } from '../../../services/tickets.service';
     MatCardTitle,
     TicketCardComponent
   ],
-  standalone: true
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class TicketDealsComponent implements OnInit {

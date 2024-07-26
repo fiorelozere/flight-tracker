@@ -1,4 +1,14 @@
-import { Component, effect, inject, Injector, input, OnInit, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  Injector,
+  input,
+  OnInit,
+  signal,
+  viewChild
+} from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { DashboardService } from '../../../services/dashboard.service';
 import { ChartConfiguration, ChartData } from 'chart.js';
@@ -45,7 +55,8 @@ import { MatProgressBar } from '@angular/material/progress-bar';
     MatButton,
     MatProgressBar
   ],
-  standalone: true
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class DashboardChart implements OnInit {
