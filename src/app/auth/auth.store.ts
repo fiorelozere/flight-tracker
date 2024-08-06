@@ -17,10 +17,12 @@ export class AuthStore {
   auth = inject(AuthService);
   snackBar = inject(MatSnackBar);
   router = inject(Router);
-  tokenStorage = injectLocalStorage<string | null>('token', {
+  token = injectLocalStorage<string | null>('token', {
     storageSync: true
   });
-  token = signal<string | null>(null);
+  test = injectLocalStorage('test', {
+    storageSync: true
+  })
   isAuthenticated = computed(() => !!this.token());
   tokenDecoded = computed(() => {
     const token = this.token();
@@ -31,8 +33,8 @@ export class AuthStore {
   });
 
   constructor() {
-    explicitEffect([this.tokenStorage], ([token]) => {
-      this.setToken(token ?? null);
+    explicitEffect([this.token], ([token]) => {
+      this.token.set(token ?? null);
       if(token) {
         this.router.navigateByUrl('/dashboard');
       } else {
@@ -43,24 +45,10 @@ export class AuthStore {
     });
   }
 
-
-  /**
-   * Initializes the store by setting the token from local storage if available.
-   */
   init() {
-    const token = this.tokenStorage();
-    if (token) {
-      this.setToken(token);
-    }
+
   }
 
-  /**
-   * Sets the authentication token.
-   * @param {string | null} token - The authentication token.
-   */
-  setToken(token: string | null) {
-    this.token.set(token);
-  }
 
   /**
    * Decodes the JWT token.
@@ -84,8 +72,7 @@ export class AuthStore {
     pipe(
       concatMap(payload =>
         this.auth.login(payload).pipe(map(response => {
-            this.setToken(response.token);
-            this.tokenStorage.set(response.token);
+            this.token.set(response.token);
             this.router.navigateByUrl('/dashboard');
             return response;
           }), catchError(err => {
@@ -105,8 +92,7 @@ export class AuthStore {
    * Logs out the user by clearing the token and navigating to the sign-in page.
    */
   logout() {
-    this.setToken(null);
-    this.tokenStorage.set(null);
+    this.token.set(null);
     this.router.navigateByUrl('/sign-in');
   }
 }
