@@ -8,7 +8,7 @@ import {
   MatCardTitle,
 } from '@angular/material/card';
 import { DatePipe } from '@angular/common';
-import { Ticket } from '../core/models/ticket.interface';
+import { Ticket } from '../../core/models/ticket.interface';
 
 @Component({
   selector: 'app-ticket-card',

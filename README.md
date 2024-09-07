@@ -90,7 +90,18 @@ The JSON Server will be running on `http://localhost:3000`.
 ## UML Diagram
 
 # Flight Tracker UML Diagram
-![uml.svg](screenshots/uml.svg)
+
+![_all.png](deps/flight-tracker-dashboard/_all.png)
+
+![core.png](deps/flight-tracker-dashboard/core.png)
+
+![feature.png](deps/flight-tracker-dashboard/feature.png)
+
+![layout.png](deps/flight-tracker-dashboard/layout.png)
+
+![pattern.png](deps/flight-tracker-dashboard/pattern.png)
+
+![ui.png](deps/flight-tracker-dashboard/ui.png)
 
 ## Documentation
 
@@ -113,11 +124,11 @@ npx compodoc -s
 ## Functionalities
 
 - **Login Page**: Authenticate as Admin or User.
-![sign-in.png](./screenshots/sign-in.png)
+  ![sign-in.png](./screenshots/sign-in.png)
 - **View and Filter Tickets**: Users and Admins can view and filter tickets.
-![sign-in.png](./screenshots/tickets.png)
+  ![sign-in.png](./screenshots/tickets.png)
 - **Create Tickets**: Admins can create multiple tickets without redirection.
-![sign-in.png](./screenshots/create-tickets.png)
+  ![sign-in.png](./screenshots/create-tickets.png)
 - **Validation**: Ensure no duplicate tickets are created.
 - **Charts**: Visualize data such as revenue by ticket type, ticket sales over time, and average ticket price by ticket type.
-![dashboard.png](./screenshots/dashboard.png)
+  ![dashboard.png](./screenshots/dashboard.png)

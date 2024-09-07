@@ -37,13 +37,15 @@ import { MatProgressBar } from '@angular/material/progress-bar';
             <mat-progress-bar mode="query"></mat-progress-bar>
           }
         </div>
-        <canvas
-          [data]="data()"
-          [options]="barChartOptions"
-          [type]="barChartType"
-          baseChart
-        >
-        </canvas>
+        @defer (when !loading()) {
+          <canvas
+            [data]="data()"
+            [options]="barChartOptions"
+            [type]="barChartType"
+            baseChart
+          >
+          </canvas>
+        }
         @if (error()) {
           <p class="m-4">{{ error() }}</p>
           <button mat-flat-button (click)="this.load()">Retry</button>

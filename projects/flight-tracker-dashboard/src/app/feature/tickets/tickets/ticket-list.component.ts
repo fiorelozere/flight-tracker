@@ -5,7 +5,7 @@ import {
   output,
 } from '@angular/core';
 import { Ticket } from '../../../core/models/ticket.interface';
-import { TicketCardComponent } from '../../../ui/ticket-card.component';
+import { TicketCardComponent } from '../../../pattern/ticket-card/ticket-card.component';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
