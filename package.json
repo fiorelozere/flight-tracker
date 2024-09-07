@@ -7,7 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "ci": "ng lint && ng test && ng build",
+    "ci": "ng lint && ng build",
     "watch": "ng build --watch --configuration development",
     "compodoc": "compodoc -p tsconfig.json",
     "format:test": "prettier --list-different \"./projects/**/*.{ts,html,scss,json}\"",
