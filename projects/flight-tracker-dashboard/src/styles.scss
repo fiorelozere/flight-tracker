@@ -4,10 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* You can add global styles to this file, and also import other style files */
+.mdc-text-field--outlined .mdc-notched-outline__notch {
+  border-left: none;
+  border-right: none;
+}
 
-html,
-body {
+/* You can add global styles to this file, and also import other style files */
+html, body {
   @apply h-full;
 }
 
