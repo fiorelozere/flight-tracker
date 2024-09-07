@@ -259,7 +259,7 @@
 
 
     <section data-compodoc="block-properties">
-    
+
     <h3 id="inputs">
         Properties
     </h3>
@@ -276,7 +276,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>inject(LayoutService)</code>
+                        <i>Default value : </i><code>inject(DashboardLayoutService)</code>
                     </td>
                 </tr>
                     <tr>
@@ -301,7 +301,7 @@ import { MatIconButton } from &#x27;@angular/material/button&#x27;;
 import { MatDrawer, MatDrawerContainer, MatDrawerContent } from &#x27;@angular/material/sidenav&#x27;;
 import { RouterLink, RouterLinkActive, RouterOutlet } from &#x27;@angular/router&#x27;;
 import { ToolbarComponent } from &#x27;./toolbar.component&#x27;;
-import { LayoutService } from &#x27;./layout.service&#x27;;
+import { DashboardLayoutService } from &#x27;./layout.service&#x27;;
 import {
   MatList,
   MatListItem,
@@ -371,7 +371,7 @@ import { MatDivider } from &#x27;@angular/material/divider&#x27;;
 })
 
 export class DashboardLayoutComponent {
-  layout &#x3D; inject(LayoutService);
+  layout &#x3D; inject(DashboardLayoutService);
 
 }
 </code></pre>
@@ -397,7 +397,7 @@ export class DashboardLayoutComponent {
         </div>
     </div>
 
-    
+
 </div>
 
 <script src="../js/libs/vis.min.js"></script>

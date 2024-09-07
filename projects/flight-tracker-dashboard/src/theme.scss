@@ -1,13 +1,13 @@
 @use '@angular/material' as mat;
 
 $theme: mat.define-theme(
-    (
-      color: (
-        theme-type: light,
-        primary: mat.$azure-palette,
-        tertiary: mat.$red-palette,
-      ),
-    )
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$red-palette,
+    ),
+  )
 );
 
 @include mat.core();

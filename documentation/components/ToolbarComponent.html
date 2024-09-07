@@ -256,7 +256,7 @@
 
 
     <section data-compodoc="block-methods">
-    
+
     <h3 id="methods">
         Methods
     </h3>
@@ -299,7 +299,7 @@
     </table>
 </section>
     <section data-compodoc="block-properties">
-    
+
     <h3 id="inputs">
         Properties
     </h3>
@@ -341,7 +341,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>inject(LayoutService)</code>
+                        <i>Default value : </i><code>inject(DashboardLayoutService)</code>
                     </td>
                 </tr>
                     <tr>
@@ -362,7 +362,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, inject, OnInit } from &#x27;@angular/core&#x27;;
 import { MatIcon } from &#x27;@angular/material/icon&#x27;;
 import { MatToolbar } from &#x27;@angular/material/toolbar&#x27;;
-import { LayoutService } from &#x27;./layout.service&#x27;;
+import { DashboardLayoutService } from &#x27;./layout.service&#x27;;
 import { MatButton, MatIconButton } from &#x27;@angular/material/button&#x27;;
 import { MatMenu, MatMenuItem, MatMenuTrigger } from &#x27;@angular/material/menu&#x27;;
 import { RouterLink } from &#x27;@angular/router&#x27;;
@@ -409,7 +409,7 @@ import { AuthStore } from &#x27;../auth/auth.store&#x27;;
 })
 
 export class ToolbarComponent {
-  layout &#x3D; inject(LayoutService);
+  layout &#x3D; inject(DashboardLayoutService);
   authState &#x3D; inject(AuthStore);
 
   logout() {
@@ -439,7 +439,7 @@ export class ToolbarComponent {
         </div>
     </div>
 
-    
+
 </div>
 
 <script src="../js/libs/vis.min.js"></script>
