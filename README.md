@@ -89,19 +89,29 @@ The JSON Server will be running on `http://localhost:3000`.
 
 ## UML Diagram
 
-# Flight Tracker UML Diagram
+- **All**
 
-![_all.png](deps/flight-tracker-dashboard/_all.png)
+  ![All](deps/flight-tracker-dashboard/_all.png)
 
-![core.png](deps/flight-tracker-dashboard/core.png)
+- **Core**
 
-![feature.png](deps/flight-tracker-dashboard/feature.png)
+  ![Core](deps/flight-tracker-dashboard/core.png)
 
-![layout.png](deps/flight-tracker-dashboard/layout.png)
+- **Feature**
 
-![pattern.png](deps/flight-tracker-dashboard/pattern.png)
+  ![Feature](deps/flight-tracker-dashboard/feature.png)
 
-![ui.png](deps/flight-tracker-dashboard/ui.png)
+- **Layout**
+
+  ![Layout](deps/flight-tracker-dashboard/layout.png)
+
+- **Pattern**
+
+  ![Pattern](deps/flight-tracker-dashboard/pattern.png)
+
+- **Ui**
+
+  ![UI](deps/flight-tracker-dashboard/ui.png)
 
 ## Documentation
 
