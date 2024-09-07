@@ -27,7 +27,7 @@ import { AuthPayload } from '../../../core/models/auth-payload.interface';
 @Component({
   selector: 'app-sign-in',
   template: `
-    <div class="flex items-center justify-center flex-column h-full w-full">
+    <div class="flex items-center justify-center flex-col h-full w-full">
       <h1>Welcome to Flight Tracker</h1>
       <mat-card appearance="outlined">
         <mat-card-header>
@@ -37,7 +37,7 @@ import { AuthPayload } from '../../../core/models/auth-payload.interface';
         <mat-card-content>
           <form
             [formGroup]="form"
-            class="flex-column flex my-4"
+            class="flex-col flex my-4"
             (ngSubmit)="login()"
           >
             <mat-form-field appearance="outline">

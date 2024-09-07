@@ -25,7 +25,7 @@ import { TicketsService } from '../../../core/tickets/tickets.service';
         <mat-card-title>Deals</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <div class="tickets-grid">
+        <div class="grid grid-cols-2">
           @for (ticket of data(); track ticket.id) {
             <app-ticket-card [ticket]="ticket"></app-ticket-card>
           } @empty {

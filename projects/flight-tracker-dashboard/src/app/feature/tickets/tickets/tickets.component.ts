@@ -23,14 +23,14 @@ import { explicitEffect } from 'ngxtension/explicit-effect';
 @Component({
   selector: 'app-tickets',
   template: `
-    <div class="h-10">
+    <div class="h-4">
       @if (store.loading()) {
         <mat-progress-bar mode="query"></mat-progress-bar>
       }
     </div>
 
-    <div class="flex items-center space-between">
-      <h3>Tickets</h3>
+    <div class="flex items-center justify-between my-2">
+      <h2>Tickets</h2>
       <button mat-flat-button *role="Role.Admin" [routerLink]="['create']">
         Create Ticket
       </button>

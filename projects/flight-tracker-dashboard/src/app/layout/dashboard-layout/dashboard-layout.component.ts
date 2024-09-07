@@ -36,9 +36,9 @@ import { MatDivider } from '@angular/material/divider';
               <div mat-subheader>{{ section.title }}</div>
               @for (element of section.children; track element) {
                 <mat-list-item
-                  class="bg-gray-hover"
+                  class="hover:bg-gray-200"
                   role="listitem"
-                  [routerLinkActive]="['bg-gray-dark']"
+                  routerLinkActive="!bg-gray-400"
                   [routerLinkActiveOptions]="{ exact: true }"
                   [routerLink]="element.link"
                 >

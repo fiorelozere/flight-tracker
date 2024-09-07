@@ -11,7 +11,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-ticket-list',
   template: `
-    <div class="tickets-grid">
+    <div class="grid grid-cols-2">
       @for (ticket of data(); track ticket.id) {
         <app-ticket-card [ticket]="ticket"></app-ticket-card>
       } @empty {

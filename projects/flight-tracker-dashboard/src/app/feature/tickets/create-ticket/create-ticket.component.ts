@@ -33,8 +33,8 @@ import { JsonPipe } from '@angular/common';
 @Component({
   selector: 'app-create-ticket',
   template: `
-    <div class="flex items-center space-between">
-      <h3>Create Ticket</h3>
+    <div class="flex items-center justify-between my-2">
+      <h2>Create Ticket</h2>
       <div>
         <button
           mat-stroked-button

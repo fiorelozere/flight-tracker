@@ -2,23 +2,25 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DashboardChartComponent } from './dashboard-chart.component';
 import { DashboardChartTypeEnum } from '../../../core/enums/dashboard-chart-type.enum';
 import { TicketDealsComponent } from './ticket-deals.component';
+import { MatProgressBar } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-dashboard',
   template: `
-    <div class="flex items-center space-between">
-      <h3>Dashboard</h3>
+    <div class="h-4"></div>
+    <div class="flex items-center justify-between">
+      <h2>Dashboard</h2>
     </div>
-    <div class="flex flex-wrap w-full space-between">
+    <div class="grid grid-cols-2 w-full gap-3">
       <app-dashboard-chart
         label="Average Price By Ticket Type"
         [type]="DashboardChartTypeEnum.AVERAGE_PRICE"
-        class="max-w-lg w-full"
+        class="w-full"
       ></app-dashboard-chart>
       <app-dashboard-chart
         label="Ticket Sales Over Time"
         [type]="DashboardChartTypeEnum.TICKET_SALES"
-        class="max-w-lg w-full"
+        class="w-full"
       ></app-dashboard-chart>
     </div>
     <div class="w-full">
@@ -26,7 +28,7 @@ import { TicketDealsComponent } from './ticket-deals.component';
     </div>
   `,
   standalone: true,
-  imports: [DashboardChartComponent, TicketDealsComponent],
+  imports: [DashboardChartComponent, TicketDealsComponent, MatProgressBar],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class DashboardComponent {

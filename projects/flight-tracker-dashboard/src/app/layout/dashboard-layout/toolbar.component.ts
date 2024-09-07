@@ -10,7 +10,7 @@ import { AuthStore } from '../../core/auth/auth.store';
 @Component({
   selector: 'app-toolbar',
   template: `
-    <mat-toolbar class="w-full flex space-between items-center">
+    <mat-toolbar class="w-full flex justify-between items-center">
       <div class="flex items-center">
         <button
           (click)="layout.toggleSideNav()"
