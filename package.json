@@ -3,11 +3,22 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "compodoc": "compodoc -p tsconfig.json"
+    "lint": "ng lint",
+    "ci": "ng lint && ng test && ng build",
+    "format:test": "prettier --list-different \"./projects/**/*.{ts,html,scss,json}\"",
+    "format:write": "prettier --write \"./projects/**/*.{ts,html,scss,json}\"",
+    "analyze": "ng build --stats-json --output-hashing=none --named-chunks && esbuild-visualizer --template treemap --metadata dist/flight-tracker-dashboard/stats.json --filename dist/flight-tracker-dashboard/analyse/index.html  && http-server -o -c-1 ./dist/flight-tracker-dashboard/analyse/",
+    "analyze:sme": "ng build --source-map --output-hashing=none --named-chunks && source-map-explorer dist/flight-tracker-dashboard/browser/*.js --html dist/flight-tracker-dashboard/sme/index.html && http-server -o -c-1 ./dist/flight-tracker-dashboard/sme/",
+    "analyze:deps": "npm-run-all analyze:deps:*",
+    "analyze:deps:all": "madge projects/flight-tracker-dashboard/src/main.ts --ts-config tsconfig.json --image ./deps/flight-tracker-dashboard/_all.png",
+    "analyze:deps:ui": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/flight-tracker-dashboard/ui.png projects/flight-tracker-dashboard/src/app/ui/",
+    "analyze:deps:pattern": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/flight-tracker-dashboard/pattern.png projects/flight-tracker-dashboard/src/app/pattern/",
+    "analyze:deps:feature": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/flight-tracker-dashboard/feature.png projects/flight-tracker-dashboard/src/app/feature/",
+    "analyze:deps:layout": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/flight-tracker-dashboard/layout.png projects/flight-tracker-dashboard/src/app/layout/",
+    "analyze:deps:core": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/flight-tracker-dashboard/core.png projects/flight-tracker-dashboard/src/app/core/"
   },
   "private": true,
   "dependencies": {
@@ -24,10 +35,13 @@
     "@ngrx/signals": "^18.0.2",
     "chart.js": "^4.4.3",
     "install": "^0.13.0",
+    "jest": "^29.7.0",
     "jwt-decode": "^4.0.0",
+    "madge": "^8.0.0",
     "ng2-charts": "^6.0.1",
     "ngxtension": "^4.0.0",
     "npm": "^10.8.2",
+    "prettier": "^3.3.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "uuid": "^10.0.0"
@@ -40,12 +54,20 @@
     "@types/jasmine": "~5.1.0",
     "@types/jwt-decode": "^3.1.0",
     "@types/uuid": "^10.0.0",
+    "angular-eslint": "18.3.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.9.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-boundaries": "^4.2.2",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.5.2"
+    "postcss": "^8.4.45",
+    "tailwindcss": "^3.4.10",
+    "typescript": "~5.5.2",
+    "typescript-eslint": "8.1.0"
   }
 }
