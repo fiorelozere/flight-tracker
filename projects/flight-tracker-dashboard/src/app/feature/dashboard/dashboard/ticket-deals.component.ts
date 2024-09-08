@@ -12,7 +12,7 @@ import {
   MatCardTitle,
 } from '@angular/material/card';
 import { TicketCardComponent } from '../../../pattern/ticket-card/ticket-card.component';
-import { Ticket } from '../../../core/models/ticket.interface';
+import { Ticket } from '../../../core/tickets/ticket.interface';
 import { createEffect } from 'ngxtension/create-effect';
 import { catchError, of, pipe, switchMap, tap } from 'rxjs';
 import { TicketsService } from '../../../core/tickets/tickets.service';

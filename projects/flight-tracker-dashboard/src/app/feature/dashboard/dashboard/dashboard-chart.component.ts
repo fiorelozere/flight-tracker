@@ -20,7 +20,7 @@ import {
 } from '@angular/material/card';
 import { createEffect } from 'ngxtension/create-effect';
 import { catchError, map, Observable, of, pipe, switchMap, tap } from 'rxjs';
-import { DashboardChartTypeEnum } from '../../../core/enums/dashboard-chart-type.enum';
+import { DashboardChartTypeEnum } from '../../../core/dashboard/dashboard-chart-type.enum';
 import { MatButton } from '@angular/material/button';
 import { MatProgressBar } from '@angular/material/progress-bar';
 

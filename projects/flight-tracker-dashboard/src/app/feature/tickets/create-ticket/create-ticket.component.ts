@@ -25,7 +25,7 @@ import {
 import { TicketsService } from '../../../core/tickets/tickets.service';
 import { createEffect } from 'ngxtension/create-effect';
 import { catchError, pipe, switchMap, tap, throwError } from 'rxjs';
-import { Ticket } from '../../../core/models/ticket.interface';
+import { Ticket } from '../../../core/tickets/ticket.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { dateRangeValidator } from '../../../core/utils/validators/date-range-validator';
 import { JsonPipe } from '@angular/common';

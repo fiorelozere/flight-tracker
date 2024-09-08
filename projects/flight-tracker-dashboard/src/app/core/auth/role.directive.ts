@@ -1,7 +1,7 @@
 import { Directive, effect, inject, input } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { AuthStore } from './auth.store';
-import { Role } from '../enums/role.enum';
+import { Role } from './role.enum';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector

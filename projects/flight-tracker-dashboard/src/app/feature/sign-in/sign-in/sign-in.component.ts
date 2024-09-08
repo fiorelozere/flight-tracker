@@ -22,7 +22,7 @@ import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthStore } from '../../../core/auth/auth.store';
-import { AuthPayload } from '../../../core/models/auth-payload.interface';
+import { AuthPayload } from '../../../core/auth/auth-payload.interface';
 
 @Component({
   selector: 'app-sign-in',

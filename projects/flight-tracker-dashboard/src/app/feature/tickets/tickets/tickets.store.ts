@@ -12,7 +12,7 @@ import { TicketsService } from '../../../core/tickets/tickets.service';
 import {
   TicketListParams,
   TicketListState,
-} from '../../../core/models/ticket-state.interface';
+} from '../../../core/tickets/ticket-state.interface';
 
 const initialState: TicketListState = {
   data: [],

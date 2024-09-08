@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { TicketListParams } from '../models/ticket-state.interface';
-import { Ticket } from '../models/ticket.interface';
+import { TicketListParams } from './ticket-state.interface';
+import { Ticket } from './ticket.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

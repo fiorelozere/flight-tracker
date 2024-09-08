@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from '../../core/auth/auth.guard';
-import { Role } from '../../core/enums/role.enum';
+import { Role } from '../../core/auth/role.enum';
 
 export default [
   {

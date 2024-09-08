@@ -1,8 +1,8 @@
 import { computed, inject, Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
-import { TokenDecoded } from '../models/token-decoded.interface';
+import { TokenDecoded } from './token-decoded.interface';
 import { AuthService } from './auth.service';
-import { AuthPayload } from '../models/auth-payload.interface';
+import { AuthPayload } from './auth-payload.interface';
 import { createEffect } from 'ngxtension/create-effect';
 import { catchError, concatMap, map, pipe, throwError } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DashboardChartComponent } from './dashboard-chart.component';
-import { DashboardChartTypeEnum } from '../../../core/enums/dashboard-chart-type.enum';
+import { DashboardChartTypeEnum } from '../../../core/dashboard/dashboard-chart-type.enum';
 import { TicketDealsComponent } from './ticket-deals.component';
 import { MatProgressBar } from '@angular/material/progress-bar';
 

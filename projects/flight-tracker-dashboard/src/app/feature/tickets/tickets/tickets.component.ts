@@ -7,7 +7,7 @@ import {
 import { MatButton } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { RoleDirective } from '../../../core/auth/role.directive';
-import { Role } from '../../../core/enums/role.enum';
+import { Role } from '../../../core/auth/role.enum';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { TicketFiltersComponent } from './ticket-filters.component';
 import { TicketListComponent } from './ticket-list.component';
@@ -15,7 +15,7 @@ import { TicketListStore } from './tickets.store';
 import { JsonPipe } from '@angular/common';
 import { PageEvent } from '@angular/material/paginator';
 import { injectQueryParams } from 'ngxtension/inject-query-params';
-import { TicketListParams } from '../../../core/models/ticket-state.interface';
+import { TicketListParams } from '../../../core/tickets/ticket-state.interface';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { explicitEffect } from 'ngxtension/explicit-effect';

@@ -25,7 +25,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
 import { JsonPipe } from '@angular/common';
 import { MatButton } from '@angular/material/button';
-import { TicketListParams } from '../../../core/models/ticket-state.interface';
+import { TicketListParams } from '../../../core/tickets/ticket-state.interface';
 
 export interface TicketFiltersForm {
   from_date: string | null;

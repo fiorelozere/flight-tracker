@@ -4,7 +4,7 @@ import {
   input,
   output,
 } from '@angular/core';
-import { Ticket } from '../../../core/models/ticket.interface';
+import { Ticket } from '../../../core/tickets/ticket.interface';
 import { TicketCardComponent } from '../../../pattern/ticket-card/ticket-card.component';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
