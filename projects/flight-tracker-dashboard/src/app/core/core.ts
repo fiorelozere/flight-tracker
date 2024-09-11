@@ -16,7 +16,6 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './auth/auth.interceptor';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { AuthStore } from './auth/auth.store';
 
 export interface CoreOptions {
@@ -46,7 +45,6 @@ export function provideCore({ routes }: CoreOptions) {
     ),
     provideNativeDateAdapter(),
     MatSnackBar,
-    provideCharts(withDefaultRegisterables()),
     // other 3rd party libraries providers like NgRx, provideStore()
 
     // other application specific providers and setup
